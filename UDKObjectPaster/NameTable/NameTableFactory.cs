@@ -9,6 +9,8 @@ namespace UDKObjectPaster.NameTable
         {
             switch (uObj.NameTable.Name)
             {
+                case "DynamicMeshActor_TA":
+                    return new DynamicMeshActor_TA(uObj, fileName, useInvisitek);
                 case "PlayerStart_TA":
                     return new PlayerStart_TA(uObj, fileName, useInvisitek);
                 case "StaticMeshActor":

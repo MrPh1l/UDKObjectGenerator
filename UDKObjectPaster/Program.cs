@@ -33,7 +33,7 @@ namespace UDKObjectPaster
                 if (obj.ExportTable == null || obj.Name == "None")
                     continue;
 
-                //if (obj.NameTable.Name == "StaticMeshActor" || obj.NameTable.Name == "StaticMeshActor_SMC") // Only use one NameTable during my tests until they're all implemented
+                //if (obj.NameTable.Name == "DynamicMeshActor_TA") // Only use one NameTable during my tests until they're all implemented
                 //{
                 var nameTable = NameTableFactory.GetNameTable(obj, fileName, useInvisitek);
 
