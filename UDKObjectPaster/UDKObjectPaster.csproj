@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NameTable\DynamicMeshActor_TA.cs" />
+    <Compile Include="NameTable\InterpActor.cs" />
     <Compile Include="NameTable\PlayerStart_TA.cs" />
     <Compile Include="NameTable\StaticMeshActor.cs" />
     <Compile Include="Program.cs" />
