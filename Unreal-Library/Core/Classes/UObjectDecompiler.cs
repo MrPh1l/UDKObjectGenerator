@@ -41,9 +41,9 @@ namespace UELib.Core
 
             string output = String.Empty;
 
-            #if DEBUG
-            output += UDecompilingState.Tabs + "// Object Offset:" + UnrealMethods.FlagToString( (uint)ExportTable.SerialOffset ) + "\r\n";
-            #endif
+            //#if DEBUG
+            //output += UDecompilingState.Tabs + "// Object Offset:" + UnrealMethods.FlagToString( (uint)ExportTable.SerialOffset ) + "\r\n";
+            //#endif
 
             for( int i = 0; i < Properties.Count; ++ i )
             {
