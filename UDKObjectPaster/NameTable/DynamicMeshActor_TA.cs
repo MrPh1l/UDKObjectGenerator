@@ -7,7 +7,7 @@ namespace UDKObjectPaster.NameTable
 {
     public class DynamicMeshActor_TA : BaseNameTable
     {
-        public DynamicMeshActor_TA(UObject uObj, string fileName, bool useInvisitek) : base(uObj, fileName, useInvisitek) { }
+        public DynamicMeshActor_TA(UObject uObj, string fileName, bool useInvisitek, bool useLayers) : base(uObj, fileName, useInvisitek, useLayers) { }
 
         public override string ProcessString()
         {

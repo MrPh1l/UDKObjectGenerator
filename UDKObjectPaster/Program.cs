@@ -19,7 +19,9 @@ namespace UDKObjectPaster
             if (fileName == null)
                 return;
 
+            // TODO: improve logic to allow those args in any order
             var useInvisitek = args.Length > 1 && args[1].ToLower() == "--invisitek";
+            var useLayers = args.Length > 2 && args[2].ToLower() == "--layers";
 
             Console.Write("Loading package ... ");
             var package = UnrealLoader.LoadFullPackage(args[0], FileAccess.Read);
@@ -33,9 +35,9 @@ namespace UDKObjectPaster
                 if (obj.ExportTable == null || obj.Name == "None")
                     continue;
 
-                //if (obj.NameTable.Name == "DynamicMeshActor_TA") // Only use one NameTable during my tests until they're all implemented
+                //if (obj.NameTable.Name == "PlayerStart_TA") // Only use one NameTable during my tests until they're all implemented
                 //{
-                var nameTable = NameTableFactory.GetNameTable(obj, fileName, useInvisitek);
+                var nameTable = NameTableFactory.GetNameTable(obj, fileName, useInvisitek, useLayers);
 
                 if (nameTable != null)
                     finalString += nameTable.ProcessString();

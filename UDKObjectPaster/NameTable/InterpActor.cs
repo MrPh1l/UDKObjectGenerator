@@ -7,7 +7,7 @@ namespace UDKObjectPaster.NameTable
 {
     public class InterpActor : BaseNameTable
     {
-        public InterpActor(UObject uObj, string fileName, bool useInvisitek) : base(uObj, fileName, useInvisitek) { }
+        public InterpActor(UObject uObj, string fileName, bool useInvisitek, bool useLayers) : base(uObj, fileName, useInvisitek, useLayers) { }
 
         public override string ProcessString()
         {

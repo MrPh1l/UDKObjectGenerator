@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UELib.Core;
 
@@ -6,7 +7,7 @@ namespace UDKObjectPaster.NameTable
 {
     public class PlayerStart_TA : BaseNameTable
     {
-        public PlayerStart_TA(UObject uObj, string fileName, bool useInvisitek) : base(uObj, fileName, useInvisitek) { }
+        public PlayerStart_TA(UObject uObj, string fileName, bool useInvisitek, bool useLayers) : base(uObj, fileName, useInvisitek, useLayers) { }
 
         public override string ProcessString()
         {
