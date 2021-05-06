@@ -19,7 +19,6 @@ namespace UDKObjectPaster.NameTable
             TextObject = TextObject.Replace("StaticMesh'", $"StaticMesh'{FileName}.");
             TextObject = TextObject.Replace("MaterialInstanceConstant'", $"MaterialInstanceConstant'{FileName}.");
             TextObject = TextObject.Replace("Material'", $"Material'{FileName}.");
-            TextObject = TextObject.Replace("InvisiTekMaterials'", $"InvisiTekMaterials'{FileName}.");
             TextObject = TextObject.Replace("EDetailMode.", "");
             TextObject = TextObject.Replace("Translation=", "Location=");
             TextObject = TextObject.Replace("\tScale3D=", "\tDrawScale3D=");
@@ -31,24 +30,6 @@ namespace UDKObjectPaster.NameTable
             var inObject = false;
 
             var lines = TextObject.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
-            if (UseInvisitek)
-            {
-                var materialLines = lines.Where(line => Regex.IsMatch(line, @"(?<!InvisiTek)Materials\([0-9]{1}\)=", RegexOptions.IgnoreCase)).ToList(); // TODO: don't get duplicates
-                var invisiTekMaterialLines = lines.Where(line => Regex.IsMatch(line, @"InvisiTekMaterials\([0-9]{1}\)=", RegexOptions.IgnoreCase)).ToList(); // TODO: don't get duplicates
-
-                for (int i = 0; i < materialLines.Count; i++)
-                {
-                    if (invisiTekMaterialLines.Count > i && !invisiTekMaterialLines[i].ToLower().Contains("=none"))
-                        stringToMoveInsideObject += "\t\t\t" + invisiTekMaterialLines[i].Replace("InvisiTekMaterials", "Materials") + "\r\n";
-                    else
-                        stringToMoveInsideObject += "\t\t\t" + materialLines[i] + "\r\n";
-                }
-
-                lines.ToList().RemoveAll(line =>
-                    Regex.IsMatch(line, @"Materials\([0-9]{1}\)=", RegexOptions.IgnoreCase)
-                    || Regex.IsMatch(line, @"InvisiTekMaterials\([0-9]{1}\)=", RegexOptions.IgnoreCase)); // TODO: Not working. Lines don't get removed
-            }
 
             foreach (var line in lines)
             {

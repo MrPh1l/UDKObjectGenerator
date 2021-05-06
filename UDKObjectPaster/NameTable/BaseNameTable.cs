@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UELib.Core;
@@ -24,13 +25,41 @@ namespace UDKObjectPaster.NameTable
 
         public virtual string ProcessString()
         {
-            Console.Write($"Processing '{UObj.Name}' ... ");
+            Console.Write($"Processing '{UObj.Name}' of type '{UObj.NameTable.Name}' ... ");
 
             if (UseInvisitek)
             {
                 var lines = TextObject.Split(new[] { '\r', '\n' }).ToList();
-                // TODO: Replace Materials by InvisiTekMaterials when its not set to 'none'
-                //       Also, delete InvisiTekMaterials row
+                var materialLines = lines.Where(line => Regex.IsMatch(line, @"(?<!InvisiTek)Materials\([0-9]{1}\)=", RegexOptions.IgnoreCase)).Select(line => new
+                {
+                    index = line.Substring(line.IndexOf("(") + 1, line.IndexOf(")") - line.IndexOf("(") - 1),
+                    materialValue = line.Substring(line.IndexOf("=") + 1)
+                });
+                var invisiTekMaterialLines = lines.Where(line => Regex.IsMatch(line, @"InvisiTekMaterials\([0-9]{1}\)=", RegexOptions.IgnoreCase)).Select(line => new
+                {
+                    index = line.Substring(line.IndexOf("(") + 1, line.IndexOf(")") - line.IndexOf("(") - 1),
+                    materialValue = line.Substring(line.IndexOf("=") + 1)
+                });
+
+                if (invisiTekMaterialLines.Any())
+                {
+                    var updatedMaterialLines = new List<string>();
+
+                    foreach (var materialLine in materialLines)
+                    {
+                        var invisiTekMaterialLine = invisiTekMaterialLines.FirstOrDefault(line => line.index == materialLine.index);
+
+                        if (invisiTekMaterialLine != null && invisiTekMaterialLine.materialValue.ToLower() != "none")
+                            updatedMaterialLines.Add("\tMaterials(" + materialLine.index + ")=" + invisiTekMaterialLine.materialValue);
+                        else
+                            updatedMaterialLines.Add("\tMaterials(" + materialLine.index + ")=" + materialLine.materialValue);
+                    }
+
+                    var materialStartIndex = lines.FindIndex(line => line.ToLower().Contains("materials(0)="));
+                    lines.RemoveAll(line => Regex.IsMatch(line, @"Materials\([0-9]{1}\)=", RegexOptions.IgnoreCase));
+                    lines.InsertRange(materialStartIndex, updatedMaterialLines);
+                    TextObject = string.Join("\r\n", lines.Where(line => !string.IsNullOrWhiteSpace(line)));
+                }
             }
 
             if (UseLayers)
