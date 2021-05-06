@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace UDKObjectPaster
+namespace UDKObjectGenerator
 {
     static class Program
     {

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetExtraction", "..\Asset
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RLUPKT.Core", "..\RLUPKT\Core\RLUPKT.Core.csproj", "{E8017DF7-BFAE-41BF-892B-38295C538524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UDKObjectPaster", "..\UDKObjectPaster\UDKObjectPaster.csproj", "{E57B2A4E-D2C3-4749-8A64-C62525475321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UDKObjectGenerator", "..\UDKObjectGenerator\UDKObjectGenerator.csproj", "{E57B2A4E-D2C3-4749-8A64-C62525475321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 using System.Text;
 using System.Windows.Forms;
 
-namespace UDKObjectPaster
+namespace UDKObjectGenerator
 {
     public class ControlWriter : TextWriter
     {

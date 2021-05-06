@@ -1,5 +1,5 @@
 ﻿
-namespace UDKObjectPaster
+namespace UDKObjectGenerator
 {
     partial class MainForm
     {
@@ -31,12 +31,15 @@ namespace UDKObjectPaster
         {
             this.btnGenerate = new System.Windows.Forms.Button();
             this.bgWorkerGeneration = new System.ComponentModel.BackgroundWorker();
-            this.chkLstBoxTypesToGenerate = new System.Windows.Forms.CheckedListBox();
             this.lblTypesToGenerate = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.lblFileName = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lstBoxTypesToGenerate = new System.Windows.Forms.ListBox();
+            this.chckBoxLayers = new System.Windows.Forms.CheckBox();
+            this.chckBoxInvisitek = new System.Windows.Forms.CheckBox();
+            this.lblSettings = new System.Windows.Forms.Label();
             this.txtBoxConsole = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -47,9 +50,9 @@ namespace UDKObjectPaster
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(179, 316);
+            this.btnGenerate.Location = new System.Drawing.Point(158, 309);
             this.btnGenerate.Name = "btnGenerate";
-            this.btnGenerate.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerate.Size = new System.Drawing.Size(96, 30);
             this.btnGenerate.TabIndex = 0;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
@@ -60,24 +63,10 @@ namespace UDKObjectPaster
             this.bgWorkerGeneration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgWorkerGeneration_DoWork);
             this.bgWorkerGeneration.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BgWorkerGeneration_RunWorkerCompleted);
             // 
-            // chkLstBoxTypesToGenerate
-            // 
-            this.chkLstBoxTypesToGenerate.FormattingEnabled = true;
-            this.chkLstBoxTypesToGenerate.Items.AddRange(new object[] {
-            "DynamicMeshActor_TA",
-            "InterpActor",
-            "PlayerStart_TA",
-            "StaticMeshActor",
-            "StaticMeshActor_SMC"});
-            this.chkLstBoxTypesToGenerate.Location = new System.Drawing.Point(13, 92);
-            this.chkLstBoxTypesToGenerate.Name = "chkLstBoxTypesToGenerate";
-            this.chkLstBoxTypesToGenerate.Size = new System.Drawing.Size(241, 94);
-            this.chkLstBoxTypesToGenerate.TabIndex = 1;
-            // 
             // lblTypesToGenerate
             // 
             this.lblTypesToGenerate.AutoSize = true;
-            this.lblTypesToGenerate.Location = new System.Drawing.Point(13, 74);
+            this.lblTypesToGenerate.Location = new System.Drawing.Point(13, 160);
             this.lblTypesToGenerate.Name = "lblTypesToGenerate";
             this.lblTypesToGenerate.Size = new System.Drawing.Size(99, 15);
             this.lblTypesToGenerate.TabIndex = 2;
@@ -86,6 +75,7 @@ namespace UDKObjectPaster
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Map files|*.upk";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog1_FileOk);
             // 
             // btnBrowse
@@ -114,7 +104,10 @@ namespace UDKObjectPaster
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.chkLstBoxTypesToGenerate);
+            this.splitContainer1.Panel1.Controls.Add(this.lstBoxTypesToGenerate);
+            this.splitContainer1.Panel1.Controls.Add(this.chckBoxLayers);
+            this.splitContainer1.Panel1.Controls.Add(this.chckBoxInvisitek);
+            this.splitContainer1.Panel1.Controls.Add(this.lblSettings);
             this.splitContainer1.Panel1.Controls.Add(this.lblFileName);
             this.splitContainer1.Panel1.Controls.Add(this.btnGenerate);
             this.splitContainer1.Panel1.Controls.Add(this.btnBrowse);
@@ -126,6 +119,51 @@ namespace UDKObjectPaster
             this.splitContainer1.Size = new System.Drawing.Size(822, 349);
             this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 5;
+            // 
+            // lstBoxTypesToGenerate
+            // 
+            this.lstBoxTypesToGenerate.FormattingEnabled = true;
+            this.lstBoxTypesToGenerate.ItemHeight = 15;
+            this.lstBoxTypesToGenerate.Items.AddRange(new object[] {
+            "DynamicMeshActor_TA",
+            "InterpActor",
+            "PlayerStart_TA",
+            "StaticMeshActor",
+            "StaticMeshActor_SMC"});
+            this.lstBoxTypesToGenerate.Location = new System.Drawing.Point(13, 178);
+            this.lstBoxTypesToGenerate.Name = "lstBoxTypesToGenerate";
+            this.lstBoxTypesToGenerate.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstBoxTypesToGenerate.Size = new System.Drawing.Size(241, 79);
+            this.lstBoxTypesToGenerate.TabIndex = 8;
+            // 
+            // chckBoxLayers
+            // 
+            this.chckBoxLayers.AutoSize = true;
+            this.chckBoxLayers.Location = new System.Drawing.Point(13, 118);
+            this.chckBoxLayers.Name = "chckBoxLayers";
+            this.chckBoxLayers.Size = new System.Drawing.Size(174, 19);
+            this.chckBoxLayers.TabIndex = 7;
+            this.chckBoxLayers.Text = "Add custom layer to objects";
+            this.chckBoxLayers.UseVisualStyleBackColor = true;
+            // 
+            // chckBoxInvisitek
+            // 
+            this.chckBoxInvisitek.AutoSize = true;
+            this.chckBoxInvisitek.Location = new System.Drawing.Point(13, 96);
+            this.chckBoxInvisitek.Name = "chckBoxInvisitek";
+            this.chckBoxInvisitek.Size = new System.Drawing.Size(142, 19);
+            this.chckBoxInvisitek.TabIndex = 6;
+            this.chckBoxInvisitek.Text = "Use invisitek materials";
+            this.chckBoxInvisitek.UseVisualStyleBackColor = true;
+            // 
+            // lblSettings
+            // 
+            this.lblSettings.AutoSize = true;
+            this.lblSettings.Location = new System.Drawing.Point(13, 78);
+            this.lblSettings.Name = "lblSettings";
+            this.lblSettings.Size = new System.Drawing.Size(49, 15);
+            this.lblSettings.TabIndex = 5;
+            this.lblSettings.Text = "Settings";
             // 
             // txtBoxConsole
             // 
@@ -147,7 +185,7 @@ namespace UDKObjectPaster
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "UDK Object Paster";
+            this.Text = "UDK Object Generator";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -162,13 +200,16 @@ namespace UDKObjectPaster
 
         private System.Windows.Forms.Button btnGenerate;
         private System.ComponentModel.BackgroundWorker bgWorkerGeneration;
-        private System.Windows.Forms.CheckedListBox chkLstBoxTypesToGenerate;
         private System.Windows.Forms.Label lblTypesToGenerate;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label lblFileName;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.RichTextBox txtBoxConsole;
+        private System.Windows.Forms.CheckBox chckBoxLayers;
+        private System.Windows.Forms.CheckBox chckBoxInvisitek;
+        private System.Windows.Forms.Label lblSettings;
+        private System.Windows.Forms.ListBox lstBoxTypesToGenerate;
     }
 }
 

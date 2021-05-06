@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "UDKObjectPaster": {
+    "UDKObjectGenerator": {
       "commandName": "Project"
     }
   }

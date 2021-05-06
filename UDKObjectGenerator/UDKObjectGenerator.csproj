@@ -4,6 +4,8 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>UDKObjectGenerator</AssemblyName>
+    <RootNamespace>UDKObjectGenerator</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

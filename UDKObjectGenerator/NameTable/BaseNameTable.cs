@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using UELib.Core;
 
-namespace UDKObjectPaster.NameTable
+namespace UDKObjectGenerator.NameTable
 {
     public class BaseNameTable
     {

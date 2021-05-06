@@ -1,11 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using UDKObjectPaster.NameTable;
+using UDKObjectGenerator.NameTable;
 using UELib;
 
-namespace UDKObjectPaster
+namespace UDKObjectGenerator
 {
     public partial class MainForm : Form
     {
@@ -19,7 +18,6 @@ namespace UDKObjectPaster
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //AllocConsole();
             Console.SetOut(new ControlWriter(txtBoxConsole));
         }
 
@@ -31,6 +29,9 @@ namespace UDKObjectPaster
 
         private void BgWorkerGeneration_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            btnGenerate.Text = "Generating ...";
+            splitContainer1.Panel1.Enabled = false;
+
             if (!File.Exists(filePath))
                 return;
 
@@ -38,10 +39,6 @@ namespace UDKObjectPaster
 
             if (fileName == null)
                 return;
-
-            // TODO: improve logic to allow those args in any order
-            var useInvisitek = true;
-            var useLayers = true;
 
             Console.Write("Loading package ... ");
             var package = UnrealLoader.LoadFullPackage(filePath, FileAccess.Read);
@@ -55,13 +52,13 @@ namespace UDKObjectPaster
                 if (obj.ExportTable == null || obj.Name == "None")
                     continue;
 
-                if (chkLstBoxTypesToGenerate.CheckedItems.Count == 0
-                    || chkLstBoxTypesToGenerate.CheckedItems.Contains(obj.NameTable.Name))
+                if (lstBoxTypesToGenerate.SelectedItems.Count == 0
+                    || lstBoxTypesToGenerate.SelectedItems.Contains(obj.NameTable.Name))
                 {
                     //if (obj.NameTable.Name == "StaticMeshActor_SMC") // Only use one NameTable during my tests until they're all implemented
                     //if (obj.Name == "StaticMeshActor_SMC_39")
                     //{
-                    var nameTable = NameTableFactory.GetNameTable(obj, fileName, useInvisitek, useLayers);
+                    var nameTable = NameTableFactory.GetNameTable(obj, fileName, chckBoxInvisitek.Checked, chckBoxLayers.Checked);
 
                     if (nameTable != null)
                         finalString += nameTable.ProcessString();
@@ -85,11 +82,9 @@ namespace UDKObjectPaster
         {
             Clipboard.SetText(generatedText);
             Console.WriteLine("Objects generation copied to clipboard.");
+            btnGenerate.Text = "Generate";
+            splitContainer1.Panel1.Enabled = true;
         }
-
-        //[DllImport("kernel32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //static extern bool AllocConsole();
 
         private void BtnBrowse_Click(object sender, EventArgs e)
         {

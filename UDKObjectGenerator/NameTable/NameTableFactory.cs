@@ -1,7 +1,7 @@
 ﻿using System;
 using UELib.Core;
 
-namespace UDKObjectPaster.NameTable
+namespace UDKObjectGenerator.NameTable
 {
     public static class NameTableFactory
     {
