@@ -37,7 +37,8 @@ namespace UDKObjectGenerator.NameTable
                 }
                 else
                 {
-                    if (line.ToLower().Contains("location") || line.ToLower().Contains("rotation") || line.ToLower().Contains("drawscale3d"))
+                    if (line.ToLower().Contains("location") || line.ToLower().Contains("rotation")
+                        || line.ToLower().Contains("drawscale3d") || line.ToLower().Contains("blockrigidbody"))
                         stringToMoveAfterObject += "\t\t" + line + "\r\n";
                     else if (line.ToLower().Contains("object end"))
                         finalString += "\t\tEnd Object\r\n" + stringToMoveAfterObject + "\r\n";
