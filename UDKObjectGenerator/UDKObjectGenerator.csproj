@@ -6,6 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>UDKObjectGenerator</AssemblyName>
     <RootNamespace>UDKObjectGenerator</RootNamespace>
+    <Version>0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
