@@ -13,4 +13,10 @@
     <ProjectReference Include="..\Unreal-Library\Eliot.UELib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="keys.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
