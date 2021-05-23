@@ -13,6 +13,8 @@ namespace UDKObjectGenerator.NameTable
                     return new DynamicMeshActor_TA(uObj, fileName, useInvisitek, useLayers);
                 case "InterpActor":
                     return new InterpActor(uObj, fileName, useInvisitek, useLayers);
+                case "LensFlareSource":
+                    return new LensFlareSource(uObj, fileName, useInvisitek, useLayers);
                 case "PlayerStart_TA":
                     return new PlayerStart_TA(uObj, fileName, useInvisitek, useLayers);
                 case "StaticMeshActor":

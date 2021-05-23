@@ -64,7 +64,7 @@ namespace UDKObjectGenerator.NameTable
 
             if (UseLayers)
             {
-                var layerName = "\r\n\tLayer=\"GEN_" + UObj.NameTable.Name + "\"";
+                var layerName = "\r\n\tLayer=\"" + UObj.Package.PackageName + "__" + UObj.NameTable.Name + "\"";
 
                 if (TextObject.Contains("Layer="))
                     TextObject = Regex.Replace(TextObject, "Layer=.+\\n", layerName);

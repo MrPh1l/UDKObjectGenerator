@@ -23,7 +23,6 @@ namespace UDKObjectGenerator.NameTable
             TextObject = TextObject.Replace("\tScale3D=", "\tDrawScale3D=");
 
             var finalString = "";
-            var stringToMoveInsideObject = "";
             var stringToMoveAfterObject = "";
 
             var lines = TextObject.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -31,10 +30,7 @@ namespace UDKObjectGenerator.NameTable
             foreach (var line in lines)
             {
                 if (line.ToLower().Contains("begin object "))
-                {
                     finalString += "\t\t" + line + " ObjName=StaticMeshComponent_0 Archetype=StaticMeshComponent'Engine.Default__StaticMeshActor:StaticMeshComponent0'\r\n";
-                    finalString += stringToMoveInsideObject;
-                }
                 else
                 {
                     if (line.ToLower().Contains("location") || line.ToLower().Contains("rotation")

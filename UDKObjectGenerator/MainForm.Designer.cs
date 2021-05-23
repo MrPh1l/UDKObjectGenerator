@@ -127,13 +127,14 @@ namespace UDKObjectGenerator
             this.lstBoxTypesToGenerate.Items.AddRange(new object[] {
             "DynamicMeshActor_TA",
             "InterpActor",
+            "LensFlareSource",
             "PlayerStart_TA",
             "StaticMeshActor",
             "StaticMeshActor_SMC"});
             this.lstBoxTypesToGenerate.Location = new System.Drawing.Point(13, 178);
             this.lstBoxTypesToGenerate.Name = "lstBoxTypesToGenerate";
             this.lstBoxTypesToGenerate.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstBoxTypesToGenerate.Size = new System.Drawing.Size(241, 79);
+            this.lstBoxTypesToGenerate.Size = new System.Drawing.Size(241, 94);
             this.lstBoxTypesToGenerate.TabIndex = 8;
             // 
             // chckBoxLayers
