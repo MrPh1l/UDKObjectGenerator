@@ -50,7 +50,7 @@ namespace UDKObjectGenerator
             // btnGenerate
             // 
             this.btnGenerate.Enabled = false;
-            this.btnGenerate.Location = new System.Drawing.Point(158, 309);
+            this.btnGenerate.Location = new System.Drawing.Point(158, 371);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(96, 30);
             this.btnGenerate.TabIndex = 0;
@@ -116,7 +116,7 @@ namespace UDKObjectGenerator
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.txtBoxConsole);
-            this.splitContainer1.Size = new System.Drawing.Size(822, 349);
+            this.splitContainer1.Size = new System.Drawing.Size(822, 413);
             this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -125,6 +125,7 @@ namespace UDKObjectGenerator
             this.lstBoxTypesToGenerate.FormattingEnabled = true;
             this.lstBoxTypesToGenerate.ItemHeight = 15;
             this.lstBoxTypesToGenerate.Items.AddRange(new object[] {
+            "AkAmbientSoundActor",
             "DynamicMeshActor_TA",
             "InterpActor",
             "LensFlareSource",
@@ -134,7 +135,7 @@ namespace UDKObjectGenerator
             this.lstBoxTypesToGenerate.Location = new System.Drawing.Point(13, 178);
             this.lstBoxTypesToGenerate.Name = "lstBoxTypesToGenerate";
             this.lstBoxTypesToGenerate.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstBoxTypesToGenerate.Size = new System.Drawing.Size(241, 94);
+            this.lstBoxTypesToGenerate.Size = new System.Drawing.Size(241, 109);
             this.lstBoxTypesToGenerate.TabIndex = 8;
             // 
             // chckBoxLayers
@@ -172,7 +173,7 @@ namespace UDKObjectGenerator
             this.txtBoxConsole.Location = new System.Drawing.Point(10, 12);
             this.txtBoxConsole.Name = "txtBoxConsole";
             this.txtBoxConsole.ReadOnly = true;
-            this.txtBoxConsole.Size = new System.Drawing.Size(522, 325);
+            this.txtBoxConsole.Size = new System.Drawing.Size(522, 389);
             this.txtBoxConsole.TabIndex = 0;
             this.txtBoxConsole.Text = "";
             this.txtBoxConsole.TextChanged += new System.EventHandler(this.TxtBoxConsole_TextChanged);
@@ -181,7 +182,7 @@ namespace UDKObjectGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 348);
+            this.ClientSize = new System.Drawing.Size(821, 412);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

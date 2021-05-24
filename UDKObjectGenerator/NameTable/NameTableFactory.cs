@@ -9,6 +9,8 @@ namespace UDKObjectGenerator.NameTable
         {
             switch (uObj.NameTable.Name)
             {
+                case "AkAmbientSoundActor":
+                    return new AkAmbientSoundActor(uObj, fileName, useInvisitek, useLayers);
                 case "DynamicMeshActor_TA":
                     return new DynamicMeshActor_TA(uObj, fileName, useInvisitek, useLayers);
                 case "InterpActor":
