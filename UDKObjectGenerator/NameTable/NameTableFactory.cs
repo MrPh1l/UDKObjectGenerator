@@ -13,6 +13,8 @@ namespace UDKObjectGenerator.NameTable
                     return new AkAmbientSoundActor(uObj, fileName, useInvisitek, useLayers);
                 case "DynamicMeshActor_TA":
                     return new DynamicMeshActor_TA(uObj, fileName, useInvisitek, useLayers);
+                case "Emitter_PSC":
+                    return new Emitter_PSC(uObj, fileName, useInvisitek, useLayers);
                 case "InterpActor":
                     return new InterpActor(uObj, fileName, useInvisitek, useLayers);
                 case "LensFlareSource":
