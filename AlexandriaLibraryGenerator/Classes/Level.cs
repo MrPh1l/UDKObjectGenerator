@@ -1834,48 +1834,6 @@ namespace AlexandriaLibraryGenerator.Classes
         {
             var updateMaterialCubesKismet =
                 "Begin Object Class=Sequence Name=UpdateMaterialCubes\n" +
-                    // Update materials name switch
-                    "\tBegin Object Class=SeqAct_Switch Name=SeqAct_Switch_0\n" +
-                        $"\t\tLinkCount={Packages.Count}\n" +
-                        "\t\tIncrementAmount=0\n" +
-                        "\t\tInputLinks(0)=(DrawY=-7418,OverrideDelta=599)\n";
-
-            var updateNameSwitchDrawY = -3981;
-            var updateNameSwitchOverrideDelta = 36;
-
-            for (int i = 1; i <= Packages.Count; i++)
-            {
-                updateMaterialCubesKismet +=
-                        $"\t\tOutputLinks({i - 1})=(LinkDesc=\"Link {i}\",DrawY={updateNameSwitchDrawY},OverrideDelta={updateNameSwitchOverrideDelta})\n";
-
-                updateNameSwitchDrawY += 22;
-                updateNameSwitchOverrideDelta += 22;
-            }
-
-            updateMaterialCubesKismet +=
-                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_38'),DrawX=-8252,OverrideDelta=18)\n" +
-                        "\t\tObjInstanceVersion=1\n" +
-                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-8288\n" +
-                        "\t\tObjPosY=-4040\n" +
-                        "\t\tDrawWidth=73\n" +
-                        "\t\tDrawHeight=1237\n" +
-                        "\t\tName=\"SeqAct_Switch_0\"\n" +
-                        "\t\tObjectArchetype=SeqAct_Switch'Engine.Default__SeqAct_Switch'\n" +
-                    "\tEnd Object\n" +
-                    "\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_38\n" +
-                        "\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
-                        "\t\tFindVarName=\"MaterialPackageIndex\"\n" +
-                        "\t\tObjInstanceVersion=1\n" +
-                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-8288\n" +
-                        $"\t\tObjPosY={updateNameSwitchDrawY + 25}\n" +
-                        "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
-                        "\t\tDrawWidth=32\n" +
-                        "\t\tDrawHeight=32\n" +
-                        "\t\tName=\"SeqVar_Named_38\"\n" +
-                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
-                    "\tEnd Object\n" +
                     "\tBegin Object Class=SeqEvent_RemoteEvent Name=SeqEvent_RemoteEvent_1\n" +
                         "\t\tEventName=\"Update Cubes\"\n" +
                         "\t\tMaxWidth=209\n" +
@@ -2340,6 +2298,203 @@ namespace AlexandriaLibraryGenerator.Classes
 
                 assignMatsSequencePosX += 264;
             }
+
+            // Update package names switch
+            updateMaterialCubesKismet +=
+                    "\tBegin Object Class=SeqAct_Switch Name=SeqAct_Switch_0\n" +
+                        $"\t\tLinkCount={Packages.Count}\n" +
+                        "\t\tIncrementAmount=0\n" +
+                        "\t\tInputLinks(0)=(DrawY=-7418,OverrideDelta=599)\n";
+
+            var updateNameSwitchDrawY = -3981;
+            var updateNameSwitchOverrideDelta = 36;
+
+            for (int i = 1; i <= Packages.Count; i++)
+            {
+                updateMaterialCubesKismet +=
+                        $"\t\tOutputLinks({i - 1})=(Links=((LinkedOp=SeqAct_SetString'SeqAct_SetString_{i + 45015}')),LinkDesc=\"Link {i}\",DrawY={updateNameSwitchDrawY},OverrideDelta={updateNameSwitchOverrideDelta})\n";
+
+                updateNameSwitchDrawY += 22;
+                updateNameSwitchOverrideDelta += 22;
+            }
+
+            updateMaterialCubesKismet +=
+                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_38'),DrawX=-8252,OverrideDelta=18)\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-8288\n" +
+                        "\t\tObjPosY=-4040\n" +
+                        "\t\tDrawWidth=73\n" +
+                        "\t\tDrawHeight=1237\n" +
+                        "\t\tName=\"SeqAct_Switch_0\"\n" +
+                        "\t\tObjectArchetype=SeqAct_Switch'Engine.Default__SeqAct_Switch'\n" +
+                    "\tEnd Object\n" +
+                    "\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_38\n" +
+                        "\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
+                        "\t\tFindVarName=\"MaterialPackageIndex\"\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-8288\n" +
+                        $"\t\tObjPosY={updateNameSwitchDrawY + 25}\n" +
+                        "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
+                        "\t\tDrawWidth=32\n" +
+                        "\t\tDrawHeight=32\n" +
+                        "\t\tName=\"SeqVar_Named_38\"\n" +
+                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                    "\tEnd Object\n";
+
+
+
+
+
+            // Update package names logic
+            var updatePackageNamePosY = -5000;
+
+            for (int i = 1; i <= Packages.Count; i++)
+            {
+                updateMaterialCubesKismet +=
+                    $"\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 15057}\n" +
+                        "\t\tExpectedType=Class'Engine.SeqVar_String'\n" +
+                        "\t\tFindVarName=\"NextMaterialPackage\"\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-7344\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY + 100}\n" +
+                        "\t\tObjColor=(B=0,G=255,R=0,A=255)\n" +
+                        "\t\tDrawWidth=32\n" +
+                        "\t\tDrawHeight=32\n" +
+                        $"\t\tName=\"SeqVar_Named_{i + 15057}\"\n" +
+                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                    "\tEnd Object\n" +
+                    $"\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 20056}\n" +
+                        "\t\tExpectedType=Class'Engine.SeqVar_String'\n" +
+                        "\t\tFindVarName=\"PreviousMaterialPackage\"\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-7905\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY + 100}\n" +
+                        "\t\tObjColor=(B=0,G=255,R=0,A=255)\n" +
+                        "\t\tDrawWidth=32\n" +
+                        "\t\tDrawHeight=32\n" +
+                        $"\t\tName=\"SeqVar_Named_{i + 20056}\"\n" +
+                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                    "\tEnd Object\n" +
+                    $"\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 25055}\n" +
+                        "\t\tExpectedType=Class'Engine.SeqVar_String'\n" +
+                        "\t\tFindVarName=\"CurrentMaterialPackage\"\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-7664\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY + 100}\n" +
+                        "\t\tObjColor=(B=0,G=255,R=0,A=255)\n" +
+                        "\t\tDrawWidth=32\n" +
+                        "\t\tDrawHeight=32\n" +
+                        $"\t\tName=\"SeqVar_Named_{i + 25055}\"\n" +
+                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                    "\tEnd Object\n" +
+                    // Set string previous
+                    $"\tBegin Object Class=SeqAct_SetString Name=SeqAct_SetString_{i + 45015}\n" +
+                        $"\t\tInputLinks(0)=(DrawY={updatePackageNamePosY},OverrideDelta=11)\n" +
+                        $"\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_SetString'SeqAct_SetString_{i + 50014}')),DrawY={updatePackageNamePosY},OverrideDelta=11)\n";
+
+                if (i == 1)
+                {
+                    updateMaterialCubesKismet +=
+                        "\t\tVariableLinks(0)=(DrawX=-7934,OverrideDelta=16)\n";
+                }
+                else
+                {
+                    updateMaterialCubesKismet +=
+                        $"\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_String'SeqVar_String_{i - 1 + 55007}'),DrawX=-7878,OverrideDelta=16)\n";
+                }
+
+                updateMaterialCubesKismet +=
+                        $"\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 20056}'),DrawX=-7878,OverrideDelta=68)\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-7968\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY}\n" +
+                        "\t\tDrawWidth=128\n" +
+                        "\t\tDrawHeight=61\n" +
+                        $"\t\tName=\"SeqAct_SetString_{i + 45015}\"\n" +
+                        "\t\tObjectArchetype=SeqAct_SetString'Engine.Default__SeqAct_SetString'\n" +
+                    "\tEnd Object\n" +
+                    // Set string current
+                    $"\tBegin Object Class=SeqAct_SetString Name=SeqAct_SetString_{i + 50014}\n" +
+                        $"\t\tInputLinks(0)=(DrawY={updatePackageNamePosY},OverrideDelta=11)\n" +
+                        $"\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_SetString'SeqAct_SetString_{i + 30016}')),DrawY={updatePackageNamePosY},OverrideDelta=11)\n" +
+                        $"\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_String'SeqVar_String_{i + 55007}'),DrawX=-7686,OverrideDelta=16)\n" +
+                        $"\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 25055}'),DrawX=-7630,OverrideDelta=68)\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-7720\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY}\n" +
+                        "\t\tDrawWidth=128\n" +
+                        "\t\tDrawHeight=61\n" +
+                        $"\t\tName=\"SeqAct_SetString_{i + 50014}\"\n" +
+                        "\t\tObjectArchetype=SeqAct_SetString'Engine.Default__SeqAct_SetString'\n" +
+                    "\tEnd Object\n" +
+                    // Set string next
+                    $"\tBegin Object Class=SeqAct_SetString Name=SeqAct_SetString_{i + 30016}\n" +
+                        $"\t\tInputLinks(0)=(DrawY={updatePackageNamePosY},OverrideDelta=11)\n" +
+                        $"\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_ActivateRemoteEvent'SeqAct_ActivateRemoteEvent_{i + 35003}')),DrawY={updatePackageNamePosY},OverrideDelta=11)\n";
+
+                if (i < Packages.Count)
+                {
+                    updateMaterialCubesKismet +=
+                        $"\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_String'SeqVar_String_{i + 1 + 55007}'),DrawX=-7406,OverrideDelta=68)\n";
+                }
+                else
+                {
+                    updateMaterialCubesKismet +=
+                        "\t\tVariableLinks(0)=(DrawX=-7406,OverrideDelta=68)\n";
+                }
+
+                updateMaterialCubesKismet +=
+                        $"\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 15057}'),DrawX=-7350,OverrideDelta=68)\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-7440\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY}\n" +
+                        "\t\tDrawWidth=128\n" +
+                        "\t\tDrawHeight=61\n" +
+                        $"\t\tName=\"SeqAct_SetString_{i + 30016}\"\n" +
+                        "\t\tObjectArchetype=SeqAct_SetString'Engine.Default__SeqAct_SetString'\n" +
+                    "\tEnd Object\n" +
+                    $"\tBegin Object Class=SeqAct_ActivateRemoteEvent Name=SeqAct_ActivateRemoteEvent_{i + 35003}\n" +
+                        "\t\tEventName=\"UpdateCurrentPackageName\"\n" +
+                        $"\t\tInputLinks(0)=(DrawY={updatePackageNamePosY},OverrideDelta=11)\n" +
+                        $"\t\tOutputLinks(0)=(DrawY={updatePackageNamePosY},OverrideDelta=11)\n" +
+                        "\t\tVariableLinks(0)=(DrawX=-6890,OverrideDelta=150)\n" +
+                        "\t\tObjInstanceVersion=3\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-7072\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY}\n" +
+                        "\t\tDrawWidth=365\n" +
+                        "\t\tDrawHeight=61\n" +
+                        $"\t\tName=\"SeqAct_ActivateRemoteEvent_{i + 35003}\"\n" +
+                        "\t\tObjectArchetype=SeqAct_ActivateRemoteEvent'Engine.Default__SeqAct_ActivateRemoteEvent'\n" +
+                    "\tEnd Object\n" +
+                    $"\tBegin Object Class=SeqVar_String Name=SeqVar_String_{i + 55007}\n" +
+                        $"\t\tStrValue=\"mats_{Packages[i - 1].Name}\"\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-6488\n" +
+                        $"\t\tObjPosY={updatePackageNamePosY}\n" +
+                        "\t\tDrawWidth=32\n" +
+                        "\t\tDrawHeight=32\n" +
+                        $"\t\tName=\"SeqVar_String_{i + 55007}\"\n" +
+                        "\t\tObjectArchetype=SeqVar_String'Engine.Default__SeqVar_String'\n" +
+                    "\tEnd Object\n";
+
+                updatePackageNamePosY += 200;
+            }
+
+
+
+
+
+
 
             updateMaterialCubesKismet +=
                     "\tDefaultViewX=2552\n" +
