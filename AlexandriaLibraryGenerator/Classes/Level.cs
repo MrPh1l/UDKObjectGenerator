@@ -1838,12 +1838,12 @@ namespace AlexandriaLibraryGenerator.Classes
                     "\tBegin Object Class=SeqAct_Switch Name=SeqAct_Switch_0\n" +
                         "\t\tLinkCount=1\n" +
                         "\t\tIncrementAmount=0\n" +
-                        "\t\tInputLinks(0)=(DrawY=-3418,OverrideDelta=599)\n" +
-                        "\t\tOutputLinks(0)=(Links=,LinkDesc=\"Link 1\",DrawY=-3981,OverrideDelta=36)\n" +
-                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_38'),DrawX=-4252,OverrideDelta=18)\n" +
+                        "\t\tInputLinks(0)=(DrawY=-7418,OverrideDelta=599)\n" +
+                        "\t\tOutputLinks(0)=(Links=,LinkDesc=\"Link 1\",DrawY=-7981,OverrideDelta=36)\n" +
+                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_38'),DrawX=-8252,OverrideDelta=18)\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4288\n" +
+                        "\t\tObjPosX=-8288\n" +
                         "\t\tObjPosY=-4040\n" +
                         "\t\tDrawWidth=73\n" +
                         "\t\tDrawHeight=1237\n" +
@@ -1855,7 +1855,7 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tFindVarName=\"MaterialPackageIndex\"\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4288\n" +
+                        "\t\tObjPosX=-8288\n" +
                         "\t\tObjPosY=-2760\n" +
                         "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
                         "\t\tDrawWidth=32\n" +
@@ -1863,27 +1863,14 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tName=\"SeqVar_Named_38\"\n" +
                         "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
                     "\tEnd Object\n" +
-                    "\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_48\n" +
-                        "\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
-                        "\t\tFindVarName=\"MaterialPackageIndex\"\n" +
-                        "\t\tObjInstanceVersion=1\n" +
-                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4272\n" +
-                        "\t\tObjPosY=-5632\n" +
-                        "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
-                        "\t\tDrawWidth=32\n" +
-                        "\t\tDrawHeight=32\n" +
-                        "\t\tName=\"SeqVar_Named_48\"\n" +
-                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
-                    "\tEnd Object\n" +
                     "\tBegin Object Class=SeqEvent_RemoteEvent Name=SeqEvent_RemoteEvent_1\n" +
                         "\t\tEventName=\"Update Cubes\"\n" +
                         "\t\tMaxWidth=209\n" +
                         "\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_ActivateRemoteEvent'SeqAct_ActivateRemoteEvent_146')),DrawY=-6926,OverrideDelta=11)\n" +
-                        "\t\tVariableLinks(0)=(DrawX=-5144,OverrideDelta=72)\n" +
+                        "\t\tVariableLinks(0)=(DrawX=-9144,OverrideDelta=72)\n" +
                         "\t\tObjInstanceVersion=2\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-5248\n" +
+                        "\t\tObjPosX=-9248\n" +
                         "\t\tObjPosY=-6992\n" +
                         "\t\tDrawWidth=124\n" +
                         "\t\tDrawHeight=128\n" +
@@ -1897,10 +1884,10 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tInputLinks(2)=(DrawY=-6881,OverrideDelta=56)\n" +
                         "\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_Switch'SeqAct_Switch_1'),(LinkedOp=SeqAct_Switch'SeqAct_Switch_0')),DrawY=-6918,OverrideDelta=19)\n" +
                         "\t\tOutputLinks(1)=(DrawY=-6886,OverrideDelta=51)\n" +
-                        "\t\tVariableLinks(0)=(DrawX=-4516,OverrideDelta=25)\n" +
+                        "\t\tVariableLinks(0)=(DrawX=-8516,OverrideDelta=25)\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4568\n" +
+                        "\t\tObjPosX=-8568\n" +
                         "\t\tObjPosY=-6960\n" +
                         "\t\tObjComment=\"Safety: make sure all cube are already hidden before going on\"\n" +
                         "\t\tDrawWidth=106\n" +
@@ -1912,10 +1899,10 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tEventName=\"HideAllCubes\"\n" +
                         "\t\tInputLinks(0)=(DrawY=-6926,OverrideDelta=11)\n" +
                         "\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_Delay'SeqAct_Delay_3')),DrawY=-6926,OverrideDelta=11)\n" +
-                        "\t\tVariableLinks(0)=(DrawX=-4790,OverrideDelta=98)\n" +
+                        "\t\tVariableLinks(0)=(DrawX=-8790,OverrideDelta=98)\n" +
                         "\t\tObjInstanceVersion=3\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4920\n" +
+                        "\t\tObjPosX=-8920\n" +
                         "\t\tObjPosY=-6960\n" +
                         "\t\tDrawWidth=261\n" +
                         "\t\tDrawHeight=61\n" +
@@ -1934,7 +1921,7 @@ namespace AlexandriaLibraryGenerator.Classes
             for (int i = 1; i <= Packages.Count; i++)
             {
                 updateMaterialCubesKismet +=
-                        $"\t\tOutputLinks({i})=(Links=((LinkedOp=Sequence'AssignMaterials";
+                        $"\t\tOutputLinks({i - 1})=(Links=((LinkedOp=Sequence'AssignMaterials";
                 updateMaterialCubesKismet += i == 1 ? "" : $"_{i}";
                 updateMaterialCubesKismet +=
                         $"')),LinkDesc=\"Link {i}\",DrawY={updateNameSwitchDrawY},OverrideDelta={updateNameSwitchOverrideDelta})\n";
@@ -1944,18 +1931,31 @@ namespace AlexandriaLibraryGenerator.Classes
             }
 
             updateMaterialCubesKismet +=
-                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_48'),DrawX=-4235,OverrideDelta=18)\n" +
+                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_48'),DrawX=-8235,OverrideDelta=18)\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4271\n" +
+                        "\t\tObjPosX=-8271\n" +
                         "\t\tObjPosY=-6906\n" +
                         "\t\tDrawWidth=73\n" +
                         "\t\tDrawHeight=1237\n" +
                         "\t\tName=\"SeqAct_Switch_1\"\n" +
                         "\t\tObjectArchetype=SeqAct_Switch'Engine.Default__SeqAct_Switch'\n" +
+                    "\tEnd Object\n" +
+                    "\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_48\n" +
+                        "\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
+                        "\t\tFindVarName=\"MaterialPackageIndex\"\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-8272\n" +
+                        $"\t\tObjPosY={updateNameSwitchDrawY + 25}\n" +
+                        "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
+                        "\t\tDrawWidth=32\n" +
+                        "\t\tDrawHeight=32\n" +
+                        "\t\tName=\"SeqVar_Named_48\"\n" +
+                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
                     "\tEnd Object\n";
 
-            var sequenceNameVarPosX = -3080;
+            var sequenceNameVarPosX = -7080;
 
             for (int i = 1; i <= Packages.Count; i++)
             {
@@ -1978,7 +1978,7 @@ namespace AlexandriaLibraryGenerator.Classes
             }
 
             // AssignMaterials sequences
-            var assignMatsSequencePosX = -3112;
+            var assignMatsSequencePosX = -7112;
 
             for (int i = 1; i <= Packages.Count; i++)
             {
@@ -2052,7 +2052,7 @@ namespace AlexandriaLibraryGenerator.Classes
                             "\t\t\tObjColor=(B=102,G=0,R=102,A=255)\n" +
                             "\t\t\tDrawWidth=32\n" +
                             "\t\t\tDrawHeight=32\n" +
-                            "\t\t\tName=\"SeqVar_Named_{i + 3519}\"\n" +
+                            $"\t\t\tName=\"SeqVar_Named_{i + 3519}\"\n" +
                             "\t\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
                         "\t\tEnd Object\n" +
                         $"\t\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 4018}\n" +
@@ -2114,7 +2114,7 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tEnd Object\n" +
                         $"\t\tBegin Object Class=SeqEvent_SequenceActivated Name=SeqEvent_SequenceActivated_{i + 6501}\n" +
                             "\t\t\tMaxWidth=172\n" +
-                            "\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_SetInt'SeqAct_SetInt_4')),DrawY=-6742,OverrideDelta=11)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_SetInt'SeqAct_SetInt_{i + 1503}')),DrawY=-6742,OverrideDelta=11)\n" +
                             "\t\t\tVariableLinks(0)=(DrawX=-6746,OverrideDelta=54)\n" +
                             "\t\t\tObjInstanceVersion=1\n" +
                             $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
