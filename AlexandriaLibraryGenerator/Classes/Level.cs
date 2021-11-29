@@ -1822,10 +1822,10 @@ namespace AlexandriaLibraryGenerator.Classes
                     "\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
                 "End Object\n";
 
-            Kismet += SerializeUpdateMaterialCubesKismet();
-
             // Packages object list
-            //Packages.ForEach(p => Kismet += p.GetSerialized());
+            Packages.ForEach(p => Kismet += p.GetSerialized());
+
+            Kismet += SerializeUpdateMaterialCubesKismet();
 
             Console.WriteLine("Level -> Kismet serialization done.");
         }
@@ -1836,10 +1836,23 @@ namespace AlexandriaLibraryGenerator.Classes
                 "Begin Object Class=Sequence Name=UpdateMaterialCubes\n" +
                     // Update materials name switch
                     "\tBegin Object Class=SeqAct_Switch Name=SeqAct_Switch_0\n" +
-                        "\t\tLinkCount=1\n" +
+                        $"\t\tLinkCount={Packages.Count}\n" +
                         "\t\tIncrementAmount=0\n" +
-                        "\t\tInputLinks(0)=(DrawY=-7418,OverrideDelta=599)\n" +
-                        "\t\tOutputLinks(0)=(Links=,LinkDesc=\"Link 1\",DrawY=-7981,OverrideDelta=36)\n" +
+                        "\t\tInputLinks(0)=(DrawY=-7418,OverrideDelta=599)\n";
+
+            var updateNameSwitchDrawY = -3981;
+            var updateNameSwitchOverrideDelta = 36;
+
+            for (int i = 1; i <= Packages.Count; i++)
+            {
+                updateMaterialCubesKismet +=
+                        $"\t\tOutputLinks({i - 1})=(LinkDesc=\"Link {i}\",DrawY={updateNameSwitchDrawY},OverrideDelta={updateNameSwitchOverrideDelta})\n";
+
+                updateNameSwitchDrawY += 22;
+                updateNameSwitchOverrideDelta += 22;
+            }
+
+            updateMaterialCubesKismet +=
                         "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_38'),DrawX=-8252,OverrideDelta=18)\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
@@ -1856,7 +1869,7 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
                         "\t\tObjPosX=-8288\n" +
-                        "\t\tObjPosY=-2760\n" +
+                        $"\t\tObjPosY={updateNameSwitchDrawY + 25}\n" +
                         "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
                         "\t\tDrawWidth=32\n" +
                         "\t\tDrawHeight=32\n" +
@@ -1915,8 +1928,8 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tIncrementAmount=0\n" +
                         "\t\tInputLinks(0)=(DrawY=-6284,OverrideDelta=599)\n";
 
-            var updateNameSwitchDrawY = -6853;
-            var updateNameSwitchOverrideDelta = 36;
+            var assignMatSwitchDrawY = -6853;
+            var assignMatSwitchOverrideDelta = 36;
 
             for (int i = 1; i <= Packages.Count; i++)
             {
@@ -1924,10 +1937,10 @@ namespace AlexandriaLibraryGenerator.Classes
                         $"\t\tOutputLinks({i - 1})=(Links=((LinkedOp=Sequence'AssignMaterials";
                 updateMaterialCubesKismet += i == 1 ? "" : $"_{i}";
                 updateMaterialCubesKismet +=
-                        $"')),LinkDesc=\"Link {i}\",DrawY={updateNameSwitchDrawY},OverrideDelta={updateNameSwitchOverrideDelta})\n";
+                        $"')),LinkDesc=\"Link {i}\",DrawY={assignMatSwitchDrawY},OverrideDelta={assignMatSwitchOverrideDelta})\n";
 
-                updateNameSwitchDrawY += 22;
-                updateNameSwitchOverrideDelta += 22;
+                assignMatSwitchDrawY += 22;
+                assignMatSwitchOverrideDelta += 22;
             }
 
             updateMaterialCubesKismet +=
@@ -1947,7 +1960,7 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
                         "\t\tObjPosX=-8272\n" +
-                        $"\t\tObjPosY={updateNameSwitchDrawY + 25}\n" +
+                        $"\t\tObjPosY={assignMatSwitchDrawY + 25}\n" +
                         "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
                         "\t\tDrawWidth=32\n" +
                         "\t\tDrawHeight=32\n" +
