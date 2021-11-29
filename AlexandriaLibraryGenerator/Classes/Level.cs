@@ -1834,25 +1834,12 @@ namespace AlexandriaLibraryGenerator.Classes
         {
             var updateMaterialCubesKismet =
                 "Begin Object Class=Sequence Name=UpdateMaterialCubes\n" +
-                    // Assign materials switch
+                    // Update materials name switch
                     "\tBegin Object Class=SeqAct_Switch Name=SeqAct_Switch_0\n" +
-                        $"\t\tLinkCount={Packages.Count}\n" +
+                        "\t\tLinkCount=1\n" +
                         "\t\tIncrementAmount=0\n" +
-                        "\t\tInputLinks(0)=(DrawY=-3418,OverrideDelta=599)\n";
-
-            var assignMatSwitchDrawY = -3981;
-            var assignMatSwitchOverrideDelta = 36;
-
-            for (int i = 1; i <= Packages.Count; i++)
-            {
-                updateMaterialCubesKismet +=
-                        $"\t\tOutputLinks({i})=(LinkDesc=\"Link {i}\",DrawY={assignMatSwitchDrawY},OverrideDelta={assignMatSwitchOverrideDelta})\n";
-
-                assignMatSwitchDrawY += 22;
-                assignMatSwitchOverrideDelta += 22;
-            }
-
-            updateMaterialCubesKismet +=
+                        "\t\tInputLinks(0)=(DrawY=-3418,OverrideDelta=599)\n" +
+                        "\t\tOutputLinks(0)=(Links=,LinkDesc=\"Link 1\",DrawY=-3981,OverrideDelta=36)\n" +
                         "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_38'),DrawX=-4252,OverrideDelta=18)\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
@@ -1869,11 +1856,24 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
                         "\t\tObjPosX=-4288\n" +
-                        $"\t\tObjPosY={assignMatSwitchDrawY + 25}\n" +
+                        "\t\tObjPosY=-2760\n" +
                         "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
                         "\t\tDrawWidth=32\n" +
                         "\t\tDrawHeight=32\n" +
                         "\t\tName=\"SeqVar_Named_38\"\n" +
+                        "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                    "\tEnd Object\n" +
+                    "\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_48\n" +
+                        "\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
+                        "\t\tFindVarName=\"MaterialPackageIndex\"\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        "\t\tObjPosX=-4272\n" +
+                        "\t\tObjPosY=-5632\n" +
+                        "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
+                        "\t\tDrawWidth=32\n" +
+                        "\t\tDrawHeight=32\n" +
+                        "\t\tName=\"SeqVar_Named_48\"\n" +
                         "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
                     "\tEnd Object\n" +
                     "\tBegin Object Class=SeqEvent_RemoteEvent Name=SeqEvent_RemoteEvent_1\n" +
@@ -1922,11 +1922,11 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tName=\"SeqAct_ActivateRemoteEvent_146\"\n" +
                         "\t\tObjectArchetype=SeqAct_ActivateRemoteEvent'Engine.Default__SeqAct_ActivateRemoteEvent'\n" +
                     "\tEnd Object\n" +
-                    // Update materials name switch
+                    // Assign materials switch
                     "\tBegin Object Class=SeqAct_Switch Name=SeqAct_Switch_1\n" +
                         $"\t\tLinkCount={Packages.Count}\n" +
                         "\t\tIncrementAmount=0\n" +
-                        "\t\tInputLinks(0)=(DrawY=-6290,OverrideDelta=599)\n";
+                        "\t\tInputLinks(0)=(DrawY=-6284,OverrideDelta=599)\n";
 
             var updateNameSwitchDrawY = -6853;
             var updateNameSwitchOverrideDelta = 36;
@@ -1934,36 +1934,401 @@ namespace AlexandriaLibraryGenerator.Classes
             for (int i = 1; i <= Packages.Count; i++)
             {
                 updateMaterialCubesKismet +=
-                        $"\t\tOutputLinks({i})=(LinkDesc=\"Link {i}\",DrawY={updateNameSwitchDrawY},OverrideDelta={updateNameSwitchOverrideDelta})\n";
+                        $"\t\tOutputLinks({i})=(Links=((LinkedOp=Sequence'AssignMaterials";
+                updateMaterialCubesKismet += i == 1 ? "" : $"_{i}";
+                updateMaterialCubesKismet +=
+                        $"')),LinkDesc=\"Link {i}\",DrawY={updateNameSwitchDrawY},OverrideDelta={updateNameSwitchOverrideDelta})\n";
 
                 updateNameSwitchDrawY += 22;
                 updateNameSwitchOverrideDelta += 22;
             }
 
             updateMaterialCubesKismet +=
-                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_48'),DrawX=-4236,OverrideDelta=18)\n" +
+                        "\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_48'),DrawX=-4235,OverrideDelta=18)\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4272\n" +
-                        "\t\tObjPosY=-6912\n" +
+                        "\t\tObjPosX=-4271\n" +
+                        "\t\tObjPosY=-6906\n" +
                         "\t\tDrawWidth=73\n" +
                         "\t\tDrawHeight=1237\n" +
                         "\t\tName=\"SeqAct_Switch_1\"\n" +
                         "\t\tObjectArchetype=SeqAct_Switch'Engine.Default__SeqAct_Switch'\n" +
-                    "\tEnd Object\n" +
-                    "\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_48\n" +
-                        "\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
-                        "\t\tFindVarName=\"MaterialPackageIndex\"\n" +
+                    "\tEnd Object\n";
+
+            var sequenceNameVarPosX = -3080;
+
+            for (int i = 1; i <= Packages.Count; i++)
+            {
+                updateMaterialCubesKismet +=
+                    $"\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 565}\n" +
+                        "\t\tExpectedType=Class'Engine.SeqVar_ObjectList'\n" +
+                        $"\t\tFindVarName=\"mats_{Packages[i - 1].Name}\"\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
-                        "\t\tObjPosX=-4272\n" +
-                        $"\t\tObjPosY={updateNameSwitchDrawY + 25}\n" +
-                        "\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
+                        $"\t\tObjPosX={sequenceNameVarPosX}\n" +
+                        "\t\tObjPosY=-7544\n" +
+                        "\t\tObjColor=(B=102,G=0,R=102,A=255)\n" +
                         "\t\tDrawWidth=32\n" +
                         "\t\tDrawHeight=32\n" +
-                        "\t\tName=\"SeqVar_Named_48\"\n" +
+                        $"\t\tName=\"SeqVar_Named_{i + 565}\"\n" +
                         "\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
-                    "\tEnd Object\n" +
+                    "\tEnd Object\n";
+
+                sequenceNameVarPosX += 264;
+            }
+
+            // AssignMaterials sequences
+            var assignMatsSequencePosX = -3112;
+
+            for (int i = 1; i <= Packages.Count; i++)
+            {
+                var sequenceName = i == 1 ? "AssignMaterials" : $"AssignMaterials_{i}";
+
+                updateMaterialCubesKismet +=
+                    $"\tBegin Object Class=Sequence Name={sequenceName}\n" +
+                        $"\t\tBegin Object Class=SeqVar_Object Name=SeqVar_Object_{i + 1004}\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5312\n" +
+                            "\t\t\tObjPosY=-6016\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Object_{i + 1004}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Object'Engine.Default__SeqVar_Object'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Object Name=SeqVar_Object_{i + 1503}\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-4888\n" +
+                            "\t\t\tObjPosY=-6608\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Object_{i + 1503}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Object'Engine.Default__SeqVar_Object'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Object Name=SeqVar_Object_{i + 2002}\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5016\n" +
+                            "\t\t\tObjPosY=-6424\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Object_{i + 2002}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Object'Engine.Default__SeqVar_Object'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 2521}\n" +
+                            "\t\t\tExpectedType=Class'Engine.SeqVar_ObjectList'\n" +
+                            "\t\t\tFindVarName=\"CubeMaterialList\"\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5464\n" +
+                            "\t\t\tObjPosY=-5960\n" +
+                            "\t\t\tObjColor=(B=102,G=0,R=102,A=255)\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Named_{i + 2521}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 3020}\n" +
+                            "\t\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
+                            "\t\t\tFindVarName=\"CubeListCount\"\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5648\n" +
+                            "\t\t\tObjPosY=-5936\n" +
+                            "\t\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Named_{i + 3020}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 3519}\n" +
+                            "\t\t\tExpectedType=Class'Engine.SeqVar_ObjectList'\n" +
+                            "\t\t\tFindVarName=\"CubeMaterialList\"\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5120\n" +
+                            "\t\t\tObjPosY=-6552\n" +
+                            "\t\t\tObjColor=(B=102,G=0,R=102,A=255)\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            "\t\t\tName=\"SeqVar_Named_{i + 3519}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Named Name=SeqVar_Named_{i + 4018}\n" +
+                            "\t\t\tExpectedType=Class'Engine.SeqVar_Int'\n" +
+                            "\t\t\tFindVarName=\"CubeListCount\"\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5680\n" +
+                            "\t\t\tObjPosY=-6576\n" +
+                            "\t\t\tObjColor=(B=255,G=255,R=0,A=255)\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Named_{i + 4018}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Named'Engine.Default__SeqVar_Named'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Int Name=SeqVar_Int_{i + 4517}\n" +
+                            "\t\t\tIntValue=-1\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5744\n" +
+                            "\t\t\tObjPosY=-6440\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Int_{i + 4517}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Int'Engine.Default__SeqVar_Int'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Int Name=SeqVar_Int_{i + 5016}\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-6144\n" +
+                            "\t\t\tObjPosY=-6608\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Int_{i + 5016}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Int'Engine.Default__SeqVar_Int'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_Int Name=SeqVar_Int_{i + 5515}\n" +
+                            "\t\t\tIntValue=-1\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-6574\n" +
+                            "\t\t\tObjPosY=-6687\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_Int_{i + 5515}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_Int'Engine.Default__SeqVar_Int'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqVar_External Name=SeqVar_External_{i + 6050}\n" +
+                            "\t\t\tExpectedType=Class'Engine.SeqVar_ObjectList'\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-6272\n" +
+                            "\t\t\tObjPosY=-6536\n" +
+                            "\t\t\tObjColor=(B=102,G=0,R=102,A=255)\n" +
+                            "\t\t\tDrawWidth=32\n" +
+                            "\t\t\tDrawHeight=32\n" +
+                            $"\t\t\tName=\"SeqVar_External_{i + 6050}\"\n" +
+                            "\t\t\tObjectArchetype=SeqVar_External'Engine.Default__SeqVar_External'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqEvent_SequenceActivated Name=SeqEvent_SequenceActivated_{i + 6501}\n" +
+                            "\t\t\tMaxWidth=172\n" +
+                            "\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_SetInt'SeqAct_SetInt_4')),DrawY=-6742,OverrideDelta=11)\n" +
+                            "\t\t\tVariableLinks(0)=(DrawX=-6746,OverrideDelta=54)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-6832\n" +
+                            "\t\t\tObjPosY=-6808\n" +
+                            "\t\t\tDrawWidth=106\n" +
+                            "\t\t\tDrawHeight=128\n" +
+                            $"\t\t\tName=\"SeqEvent_SequenceActivated_{i + 6501}\"\n" +
+                            "\t\t\tObjectArchetype=SeqEvent_SequenceActivated'Engine.Default__SeqEvent_SequenceActivated'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqCond_Increment Name=SeqCond_Increment_{i + 6501}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6722,OverrideDelta=23)\n" +
+                            "\t\t\tOutputLinks(0)=(DrawY=-6762,bHidden=True,OverrideDelta=15)\n" +
+                            "\t\t\tOutputLinks(1)=(DrawY=-6740,bHidden=True,OverrideDelta=37)\n" +
+                            "\t\t\tOutputLinks(2)=(DrawY=-6718,bHidden=True,OverrideDelta=59)\n" +
+                            $"\t\t\tOutputLinks(3)=(Links=((LinkedOp=SeqCond_CompareInt'SeqCond_CompareInt_{i + 7001}')),DrawY=-6732,OverrideDelta=13)\n" +
+                            $"\t\t\tOutputLinks(4)=(Links=((LinkedOp=SeqCond_CompareInt'SeqCond_CompareInt_{i + 2002}')),DrawY=-6712,OverrideDelta=33)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 4517}'),DrawX=-5922,OverrideDelta=26)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 5016}'),DrawX=-5897,OverrideDelta=51)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5952\n" +
+                            "\t\t\tObjPosY=-6768\n" +
+                            "\t\t\tDrawWidth=86\n" +
+                            "\t\t\tDrawHeight=85\n" +
+                            $"\t\t\tName=\"SeqCond_Increment_{i + 6501}\"\n" +
+                            "\t\t\tObjectArchetype=SeqCond_Increment'Engine.Default__SeqCond_Increment'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqCond_CompareInt Name=SeqCond_CompareInt_{i + 2002}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6126,OverrideDelta=59)\n" +
+                            "\t\t\tOutputLinks(0)=(DrawY=-6170,OverrideDelta=15)\n" +
+                            "\t\t\tOutputLinks(1)=(DrawY=-6148,OverrideDelta=37)\n" +
+                            "\t\t\tOutputLinks(2)=(DrawY=-6126,OverrideDelta=59)\n" +
+                            $"\t\t\tOutputLinks(3)=(Links=((LinkedOp=SeqAct_AccessObjectList'SeqAct_AccessObjectList_{i + 7001}',InputLinkIdx=3)),DrawY=-6104,OverrideDelta=81)\n" +
+                            "\t\t\tOutputLinks(4)=(DrawY=-6082,OverrideDelta=103)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 4517}'),DrawX=-5671,OverrideDelta=29)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 3020}'),DrawX=-5646,OverrideDelta=54)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5704\n" +
+                            "\t\t\tObjPosY=-6208\n" +
+                            "\t\t\tDrawWidth=91\n" +
+                            "\t\t\tDrawHeight=157\n" +
+                            $"\t\t\tName=\"SeqCond_CompareInt_{i + 2002}\"\n" +
+                            "\t\t\tObjectArchetype=SeqCond_CompareInt'Engine.Default__SeqCond_CompareInt'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqCond_CompareInt Name=SeqCond_CompareInt_{i + 7001}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6702,OverrideDelta=11)\n" +
+                            "\t\t\tOutputLinks(0)=(DrawY=-6754,bHidden=True,OverrideDelta=15)\n" +
+                            "\t\t\tOutputLinks(1)=(DrawY=-6732,bHidden=True,OverrideDelta=37)\n" +
+                            "\t\t\tOutputLinks(2)=(DrawY=-6710,bHidden=True,OverrideDelta=59)\n" +
+                            $"\t\t\tOutputLinks(3)=(Links=((LinkedOp=SeqAct_AccessObjectList'SeqAct_AccessObjectList_{i + 6501}',InputLinkIdx=3)),DrawY=-6702,OverrideDelta=11)\n" +
+                            "\t\t\tOutputLinks(4)=(DrawY=-6666,bHidden=True,OverrideDelta=103)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 4517}'),DrawX=-5711,OverrideDelta=29)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 4018}'),DrawX=-5686,OverrideDelta=54)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5744\n" +
+                            "\t\t\tObjPosY=-6736\n" +
+                            "\t\t\tDrawWidth=91\n" +
+                            "\t\t\tDrawHeight=61\n" +
+                            $"\t\t\tName=\"SeqCond_CompareInt_{i + 7001}\"\n" +
+                            "\t\t\tObjectArchetype=SeqCond_CompareInt'Engine.Default__SeqCond_CompareInt'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_ToggleHidden Name=SeqAct_ToggleHidden_{i + 6501}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6707,OverrideDelta=14)\n" +
+                            "\t\t\tInputLinks(1)=(DrawY=-6686,OverrideDelta=35)\n" +
+                            "\t\t\tInputLinks(2)=(DrawY=-6665,OverrideDelta=56)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqCond_Increment'SeqCond_Increment_{i + 6501}')),DrawY=-6686,OverrideDelta=35)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Object'SeqVar_Object_{i + 1503}'),DrawX=-4506,OverrideDelta=16)\n" +
+                            "\t\t\tVariableLinks(1)=(DrawX=-4455,OverrideDelta=76)\n" +
+                            "\t\t\tEventLinks(0)=(DrawX=-4406,OverrideDelta=119)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-4544\n" +
+                            "\t\t\tObjPosY=-6744\n" +
+                            "\t\t\tDrawWidth=173\n" +
+                            "\t\t\tDrawHeight=109\n" +
+                            $"\t\t\tName=\"SeqAct_ToggleHidden_{i + 6501}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_ToggleHidden'Engine.Default__SeqAct_ToggleHidden'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_SetMaterial Name=SeqAct_SetMaterial_{i + 7500}\n" +
+                            "\t\t\tNewMaterial=MaterialInstanceConstant'Invisible'\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6110,OverrideDelta=11)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqCond_Increment'SeqCond_Increment_{i + 6501}')),DrawY=-6110,OverrideDelta=11)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Object'SeqVar_Object_{i + 1004}'),DrawX=-5163,OverrideDelta=23)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5208\n" +
+                            "\t\t\tObjPosY=-6144\n" +
+                            "\t\t\tDrawWidth=90\n" +
+                            "\t\t\tDrawHeight=61\n" +
+                            $"\t\t\tName=\"SeqAct_SetMaterial_{i + 7500}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_SetMaterial'Engine.Default__SeqAct_SetMaterial'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_SetMaterial Name=SeqAct_SetMaterial_{i + 6501}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6702,OverrideDelta=11)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_ToggleHidden'SeqAct_ToggleHidden_{i + 6501}',InputLinkIdx=1)),DrawY=-6702,OverrideDelta=11)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Object'SeqVar_Object_{i + 1503}'),DrawX=-4770,OverrideDelta=16)\n" +
+                            $"\t\t\tVariableLinks(1)=(ExpectedType=Class'Engine.SeqVar_Object',LinkedVariables=(SeqVar_Object'SeqVar_Object_{i + 2002}'),LinkDesc=\"NewMaterial\",PropertyName=\"NewMaterial\",MinVars=0,DrawX=-4692,OverrideDelta=76)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-4808\n" +
+                            "\t\t\tObjPosY=-6736\n" +
+                            "\t\t\tDrawWidth=172\n" +
+                            "\t\t\tDrawHeight=61\n" +
+                            $"\t\t\tName=\"SeqAct_SetMaterial_{i + 6501}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_SetMaterial'Engine.Default__SeqAct_SetMaterial'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_SetInt Name=SeqAct_SetInt_{i + 1503}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6734,OverrideDelta=11)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_ModifyObjectList'SeqAct_ModifyObjectList_{i + 7500}',InputLinkIdx=1)),DrawY=-6734,OverrideDelta=11)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 5515}'),DrawX=-6542,OverrideDelta=16)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 4517}'),DrawX=-6486,OverrideDelta=68)\n" +
+                            "\t\t\tObjInstanceVersion=2\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-6576\n" +
+                            "\t\t\tObjPosY=-6768\n" +
+                            "\t\t\tDrawWidth=128\n" +
+                            "\t\t\tDrawHeight=61\n" +
+                            $"\t\t\tName=\"SeqAct_SetInt_{i + 1503}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_SetInt'Engine.Default__SeqAct_SetInt'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_ModifyObjectList Name=SeqAct_ModifyObjectList_{i + 7500}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6755,OverrideDelta=14)\n" +
+                            "\t\t\tInputLinks(1)=(DrawY=-6734,OverrideDelta=35)\n" +
+                            "\t\t\tInputLinks(2)=(DrawY=-6713,OverrideDelta=56)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqCond_Increment'SeqCond_Increment_{i + 6501}')),DrawY=-6734,OverrideDelta=35)\n" +
+                            "\t\t\tVariableLinks(0)=(DrawX=-6306,OverrideDelta=16)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_External'SeqVar_External_{i + 6050}'),DrawX=-6246,OverrideDelta=76)\n" +
+                            $"\t\t\tVariableLinks(2)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 5016}'),DrawX=-6165,OverrideDelta=137)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-6344\n" +
+                            "\t\t\tObjPosY=-6792\n" +
+                            "\t\t\tDrawWidth=237\n" +
+                            "\t\t\tDrawHeight=125\n" +
+                            $"\t\t\tName=\"SeqAct_ModifyObjectList_{i + 7500}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_ModifyObjectList'Engine.Default__SeqAct_ModifyObjectList'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_AccessObjectList Name=SeqAct_AccessObjectList_{i + 7001}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6163,OverrideDelta=14)\n" +
+                            "\t\t\tInputLinks(1)=(DrawY=-6141,OverrideDelta=36)\n" +
+                            "\t\t\tInputLinks(2)=(DrawY=-6119,OverrideDelta=58)\n" +
+                            "\t\t\tInputLinks(3)=(DrawY=-6097,OverrideDelta=80)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_SetMaterial'SeqAct_SetMaterial_{i + 7500}')),DrawY=-6130,OverrideDelta=47)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 2521}'),DrawX=-5450,OverrideDelta=16)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 4517}'),DrawX=-5394,OverrideDelta=76)\n" +
+                            $"\t\t\tVariableLinks(2)=(LinkedVariables=(SeqVar_Object'SeqVar_Object_{i + 1004}'),DrawX=-5336,OverrideDelta=128)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5488\n" +
+                            "\t\t\tObjPosY=-6200\n" +
+                            "\t\t\tDrawWidth=193\n" +
+                            "\t\t\tDrawHeight=149\n" +
+                            $"\t\t\tName=\"SeqAct_AccessObjectList_{i + 7001}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_AccessObjectList'Engine.Default__SeqAct_AccessObjectList'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_AccessObjectList Name=SeqAct_AccessObjectList_{i + 7500}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6763,OverrideDelta=14)\n" +
+                            "\t\t\tInputLinks(1)=(DrawY=-6741,OverrideDelta=36)\n" +
+                            "\t\t\tInputLinks(2)=(DrawY=-6719,OverrideDelta=58)\n" +
+                            "\t\t\tInputLinks(3)=(DrawY=-6697,OverrideDelta=80)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_SetMaterial'SeqAct_SetMaterial_{i + 6501}')),DrawY=-6730,OverrideDelta=47)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 3519}'),DrawX=-5098,OverrideDelta=16)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 4517}'),DrawX=-5042,OverrideDelta=76)\n" +
+                            $"\t\t\tVariableLinks(2)=(LinkedVariables=(SeqVar_Object'SeqVar_Object_{i + 1503}'),DrawX=-4984,OverrideDelta=128)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5136\n" +
+                            "\t\t\tObjPosY=-6800\n" +
+                            "\t\t\tDrawWidth=193\n" +
+                            "\t\t\tDrawHeight=149\n" +
+                            $"\t\t\tName=\"SeqAct_AccessObjectList_{i + 7500}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_AccessObjectList'Engine.Default__SeqAct_AccessObjectList'\n" +
+                        "\t\tEnd Object\n" +
+                        $"\t\tBegin Object Class=SeqAct_AccessObjectList Name=SeqAct_AccessObjectList_{i + 6501}\n" +
+                            "\t\t\tInputLinks(0)=(DrawY=-6755,OverrideDelta=14)\n" +
+                            "\t\t\tInputLinks(1)=(DrawY=-6733,OverrideDelta=36)\n" +
+                            "\t\t\tInputLinks(2)=(DrawY=-6711,OverrideDelta=58)\n" +
+                            "\t\t\tInputLinks(3)=(DrawY=-6689,OverrideDelta=80)\n" +
+                            $"\t\t\tOutputLinks(0)=(Links=((LinkedOp=SeqAct_AccessObjectList'SeqAct_AccessObjectList_{i + 7500}',InputLinkIdx=3)),DrawY=-6722,OverrideDelta=47)\n" +
+                            $"\t\t\tVariableLinks(0)=(LinkedVariables=(SeqVar_External'SeqVar_External_{i + 6050}'),DrawX=-5498,OverrideDelta=16)\n" +
+                            $"\t\t\tVariableLinks(1)=(LinkedVariables=(SeqVar_Int'SeqVar_Int_{i + 4517}'),DrawX=-5442,OverrideDelta=76)\n" +
+                            $"\t\t\tVariableLinks(2)=(LinkedVariables=(SeqVar_Object'SeqVar_Object_{i + 2002}'),DrawX=-5384,OverrideDelta=128)\n" +
+                            "\t\t\tObjInstanceVersion=1\n" +
+                            $"\t\t\tParentSequence=Sequence'{sequenceName}'\n" +
+                            "\t\t\tObjPosX=-5536\n" +
+                            "\t\t\tObjPosY=-6792\n" +
+                            "\t\t\tDrawWidth=193\n" +
+                            "\t\t\tDrawHeight=149\n" +
+                            $"\t\t\tName=\"SeqAct_AccessObjectList_{i + 6501}\"\n" +
+                            "\t\t\tObjectArchetype=SeqAct_AccessObjectList'Engine.Default__SeqAct_AccessObjectList'\n" +
+                        "\t\tEnd Object\n" +
+                        "\t\tDefaultViewX=5007\n" +
+                        "\t\tDefaultViewY=4912\n" +
+                        "\t\tDefaultViewZoom=0.700000\n" +
+                        $"\t\tInputLinks(0)=(LinkDesc=\"In\",LinkedOp=SeqEvent_SequenceActivated'SeqEvent_SequenceActivated_{i + 6501}',DrawY=-7646,OverrideDelta=11)\n" +
+                        $"\t\tVariableLinks(0)=(ExpectedType=Class'Engine.SeqVar_ObjectList',LinkedVariables=(SeqVar_Named'SeqVar_Named_{i + 565}'),LinkDesc=\"Default Var\",LinkVar=\"SeqVar_External_{i + 6050}\",MinVars=0,DrawX=-3057,OverrideDelta=32)\n" +
+                        "\t\tObjInstanceVersion=1\n" +
+                        "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
+                        $"\t\tObjPosX={assignMatsSequencePosX}\n" +
+                        "\t\tObjPosY=-7680\n" +
+                        $"\t\tObjName=\"{sequenceName}\"\n" +
+                        "\t\tDrawWidth=111\n" +
+                        "\t\tDrawHeight=77\n" +
+                        $"\t\tName=\"{sequenceName}\"\n" +
+                        "\t\tObjectArchetype=Sequence'Engine.Default__Sequence'\n" +
+                    "\tEnd Object\n";
+
+                assignMatsSequencePosX += 264;
+            }
+
+            updateMaterialCubesKismet +=
                     "\tDefaultViewX=2552\n" +
                     "\tDefaultViewY=3173\n" +
                     "\tDefaultViewZoom=0.400000\n" +

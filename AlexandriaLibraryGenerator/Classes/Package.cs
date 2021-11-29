@@ -8,7 +8,7 @@ namespace AlexandriaLibraryGenerator.Classes
 {
     internal class Package
     {
-        private readonly string Name;
+        public string Name { get; private set; }
         private readonly Vector2 KismetLoc;
         public List<string> Materials { get; set; } = new List<string>();
 
