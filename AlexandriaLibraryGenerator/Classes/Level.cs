@@ -18,20 +18,20 @@ namespace AlexandriaLibraryGenerator.Classes
 
         public Level(List<string> packageNames)
         {
-            var kismetLoc = new Vector2(6776, -2160);
+            var kismetLoc = new Vector2(-42, -4198);
 
             foreach (string packageName in packageNames)
             {
                 if (!File.Exists($"{rlCookedPCConsoleDir}\\{packageName}.upk"))
-                    return;
+                    continue;
 
                 var unrealPackage = UnrealLoader.LoadFullPackage($"{rlCookedPCConsoleDir}\\{packageName}.upk", FileAccess.Read);
 
                 if (unrealPackage != null)
                 {
-                    if (kismetLoc.X > 8729)
+                    if (kismetLoc.X > 1911)
                     {
-                        kismetLoc.X = 6776;
+                        kismetLoc.X = -42;
                         kismetLoc.Y += 200;
                     }
 
@@ -2476,7 +2476,7 @@ namespace AlexandriaLibraryGenerator.Classes
                         "\t\tObjectArchetype=SeqAct_ActivateRemoteEvent'Engine.Default__SeqAct_ActivateRemoteEvent'\n" +
                     "\tEnd Object\n" +
                     $"\tBegin Object Class=SeqVar_String Name=SeqVar_String_{i + 55007}\n" +
-                        $"\t\tStrValue=\"mats_{Packages[i - 1].Name}\"\n" +
+                        $"\t\tStrValue=\"{Packages[i - 1].Name}\"\n" +
                         "\t\tObjInstanceVersion=1\n" +
                         "\t\tParentSequence=Sequence'UpdateMaterialCubes'\n" +
                         "\t\tObjPosX=-6488\n" +
