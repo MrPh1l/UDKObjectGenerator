@@ -48,6 +48,8 @@ namespace UDKObjectGenerator
             this.btnGetLevelCode = new System.Windows.Forms.Button();
             this.lstBoxPackagesToGenerate = new System.Windows.Forms.ListBox();
             this.txtBoxConsole = new System.Windows.Forms.RichTextBox();
+            this.bgWorkerPackageGen = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerAlexandriaGen = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -505,6 +507,16 @@ namespace UDKObjectGenerator
             this.txtBoxConsole.Text = "";
             this.txtBoxConsole.TextChanged += new System.EventHandler(this.TxtBoxConsole_TextChanged);
             // 
+            // bgWorkerPackageGen
+            // 
+            this.bgWorkerPackageGen.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgWorkerPackageGen_DoWork);
+            this.bgWorkerPackageGen.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BgWorkerPackageGen_RunWorkerCompleted);
+            // 
+            // bgWorkerAlexandriaGen
+            // 
+            this.bgWorkerAlexandriaGen.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgWorkerAlexandriaGen_DoWork);
+            this.bgWorkerAlexandriaGen.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BgWorkerAlexandriaGen_RunWorkerCompleted);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -550,6 +562,8 @@ namespace UDKObjectGenerator
         private System.Windows.Forms.Button btnGetLevelCode;
         private System.Windows.Forms.ListBox lstBoxPackagesToGenerate;
         private System.Windows.Forms.Label lblPackagesToGenerate;
+        private System.ComponentModel.BackgroundWorker bgWorkerPackageGen;
+        private System.ComponentModel.BackgroundWorker bgWorkerAlexandriaGen;
     }
 }
 

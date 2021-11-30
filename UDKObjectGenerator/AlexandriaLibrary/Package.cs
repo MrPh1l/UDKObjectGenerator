@@ -31,7 +31,7 @@ namespace UDKObjectGenerator.AlexandriaLibrary
             if (!Materials.Any())
                 return "";
 
-            Console.WriteLine($"Package -> Starting serialization for package {Name}.");
+            Console.Write($"Package -> Starting serialization for package {Name} ... ");
 
             var serializedObjectList =
                 "Begin Object Class=SeqVar_ObjectList Name=SeqVar_ObjectList_2\n";
@@ -54,7 +54,7 @@ namespace UDKObjectGenerator.AlexandriaLibrary
                     "\tObjectArchetype=SeqVar_ObjectList'Engine.Default__SeqVar_ObjectList'\n" +
                 "End Object\n";
 
-            Console.WriteLine($"Package -> Serialization done for package {Name}.");
+            Console.WriteLine("Done.");
             return serializedObjectList;
         }
     }

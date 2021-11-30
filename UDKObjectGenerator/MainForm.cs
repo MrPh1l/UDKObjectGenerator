@@ -11,6 +11,7 @@ namespace UDKObjectGenerator
     public partial class MainForm : Form
     {
         private Level MainLevel;
+        private string generatedText = "";
         private string filePath = "";
 
         public MainForm()
@@ -25,6 +26,12 @@ namespace UDKObjectGenerator
 
         #region Package generation tab
         private void BtnGenerate_Click(object sender, EventArgs e)
+        {
+            if (!bgWorkerPackageGen.IsBusy)
+                bgWorkerPackageGen.RunWorkerAsync();
+        }
+
+        private void BgWorkerPackageGen_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             btnGenerate.Text = "Generating ...";
             splitContainer1.Panel1.Enabled = false;
@@ -72,7 +79,12 @@ namespace UDKObjectGenerator
                     "\tEnd Surface\r\n" +
                 "End Map";
 
-            Clipboard.SetText(finalString);
+            generatedText = finalString;
+        }
+
+        private void BgWorkerPackageGen_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            Clipboard.SetText(generatedText);
             Console.WriteLine("Objects generation copied to clipboard.");
             btnGenerate.Text = "Generate";
             splitContainer1.Panel1.Enabled = true;
@@ -94,8 +106,13 @@ namespace UDKObjectGenerator
         #region Alexandria library tab
         private void BtnAlexandriaGenerate_Click(object sender, EventArgs e)
         {
+            if (!bgWorkerAlexandriaGen.IsBusy)
+                bgWorkerAlexandriaGen.RunWorkerAsync();
+        }
+
+        private void BgWorkerAlexandriaGen_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
             const string rlCookedPCConsoleDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\rocketleague\\TAGame\\CookedPCConsole";
-            splitContainer1.Panel1.Enabled = false;
 
             if (!Directory.Exists(rlCookedPCConsoleDir))
                 return;
@@ -103,10 +120,17 @@ namespace UDKObjectGenerator
             if (lstBoxPackagesToGenerate.SelectedItems.Count <= 0)
                 return;
 
+            splitContainer1.Panel1.Enabled = false;
             Console.WriteLine("Starting serialization.");
+            btnAlexandriaGenerate.Text = "Generating ...";
             MainLevel = new Level(lstBoxPackagesToGenerate.SelectedItems.Cast<string>().ToList());
             MainLevel.Serialize();
+        }
+
+        private void BgWorkerAlexandriaGen_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
             Console.WriteLine("Serialize done.");
+            btnAlexandriaGenerate.Text = "Generate";
             btnGetLevelCode.Enabled = true;
             btnGetKismetCode.Enabled = true;
             splitContainer1.Panel1.Enabled = true;
