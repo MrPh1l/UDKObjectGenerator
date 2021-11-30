@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AlexandriaLibraryGenerator.Classes;
+using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using UDKObjectGenerator.NameTable;
 using UELib;
@@ -8,6 +10,7 @@ namespace UDKObjectGenerator
 {
     public partial class MainForm : Form
     {
+        private Level MainLevel;
         private string generatedText = "";
         private string filePath = "";
 
@@ -21,6 +24,7 @@ namespace UDKObjectGenerator
             Console.SetOut(new ControlWriter(txtBoxConsole));
         }
 
+        #region Package generation tab
         private void BtnGenerate_Click(object sender, EventArgs e)
         {
             if (!bgWorkerGeneration.IsBusy)
@@ -97,6 +101,41 @@ namespace UDKObjectGenerator
             lblFileName.Text = Path.GetFileName(openFileDialog1.FileName);
             btnGenerate.Enabled = true;
         }
+        #endregion
+
+        #region Alexandria library tab
+        private void BtnAlexandriaGenerate_Click(object sender, EventArgs e)
+        {
+            const string rlCookedPCConsoleDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\rocketleague\\TAGame\\CookedPCConsole";
+            splitContainer1.Panel1.Enabled = false;
+
+            if (!Directory.Exists(rlCookedPCConsoleDir))
+                return;
+
+            if (lstBoxPackagesToGenerate.SelectedItems.Count <= 0)
+                return;
+
+            Console.WriteLine("Starting serialization.");
+            MainLevel = new Level(lstBoxPackagesToGenerate.SelectedItems.Cast<string>().ToList());
+            MainLevel.Serialize();
+            Console.WriteLine("Serialize done.");
+            btnGetLevelCode.Enabled = true;
+            btnGetKismetCode.Enabled = true;
+            splitContainer1.Panel1.Enabled = true;
+        }
+
+        private void BtnGetLevelCode_Click(object sender, EventArgs e)
+        {
+            if (MainLevel != null)
+                Clipboard.SetText(MainLevel.MapData);
+        }
+
+        private void BtnGetKismetCode_Click(object sender, EventArgs e)
+        {
+            if (MainLevel != null)
+                Clipboard.SetText(MainLevel.Kismet);
+        }
+        #endregion
 
         private void TxtBoxConsole_TextChanged(object sender, EventArgs e)
         {

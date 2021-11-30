@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AlexandriaLibraryGenerator\AlexandriaLibraryGenerator.csproj" />
     <ProjectReference Include="..\Unreal-Library\Eliot.UELib.csproj" />
   </ItemGroup>
 

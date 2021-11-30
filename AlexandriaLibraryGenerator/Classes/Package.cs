@@ -6,7 +6,7 @@ using UELib;
 
 namespace AlexandriaLibraryGenerator.Classes
 {
-    internal class Package
+    public class Package
     {
         public string Name { get; private set; }
         private readonly Vector2 KismetLoc;

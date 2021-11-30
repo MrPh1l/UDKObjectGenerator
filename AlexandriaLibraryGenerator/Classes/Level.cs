@@ -7,7 +7,7 @@ using UELib;
 
 namespace AlexandriaLibraryGenerator.Classes
 {
-    internal class Level
+    public class Level
     {
         private const string rlCookedPCConsoleDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\rocketleague\\TAGame\\CookedPCConsole";
         private const string LAYER = "MainLevel";
