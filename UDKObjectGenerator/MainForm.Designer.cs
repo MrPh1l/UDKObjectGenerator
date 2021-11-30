@@ -30,7 +30,6 @@ namespace UDKObjectGenerator
         private void InitializeComponent()
         {
             this.btnGenerate = new System.Windows.Forms.Button();
-            this.bgWorkerGeneration = new System.ComponentModel.BackgroundWorker();
             this.lblTypesToGenerate = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnBrowse = new System.Windows.Forms.Button();
@@ -68,11 +67,6 @@ namespace UDKObjectGenerator
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.BtnGenerate_Click);
-            // 
-            // bgWorkerGeneration
-            // 
-            this.bgWorkerGeneration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgWorkerGeneration_DoWork);
-            this.bgWorkerGeneration.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BgWorkerGeneration_RunWorkerCompleted);
             // 
             // lblTypesToGenerate
             // 
@@ -538,7 +532,6 @@ namespace UDKObjectGenerator
         #endregion
 
         private System.Windows.Forms.Button btnGenerate;
-        private System.ComponentModel.BackgroundWorker bgWorkerGeneration;
         private System.Windows.Forms.Label lblTypesToGenerate;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnBrowse;

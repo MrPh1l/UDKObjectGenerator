@@ -1,8 +1,8 @@
-﻿using AlexandriaLibraryGenerator.Classes;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using UDKObjectGenerator.AlexandriaLibrary;
 using UDKObjectGenerator.NameTable;
 using UELib;
 
@@ -11,7 +11,6 @@ namespace UDKObjectGenerator
     public partial class MainForm : Form
     {
         private Level MainLevel;
-        private string generatedText = "";
         private string filePath = "";
 
         public MainForm()
@@ -26,12 +25,6 @@ namespace UDKObjectGenerator
 
         #region Package generation tab
         private void BtnGenerate_Click(object sender, EventArgs e)
-        {
-            if (!bgWorkerGeneration.IsBusy)
-                bgWorkerGeneration.RunWorkerAsync();
-        }
-
-        private void BgWorkerGeneration_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             btnGenerate.Text = "Generating ...";
             splitContainer1.Panel1.Enabled = false;
@@ -79,12 +72,7 @@ namespace UDKObjectGenerator
                     "\tEnd Surface\r\n" +
                 "End Map";
 
-            generatedText = finalString;
-        }
-
-        private void BgWorkerGeneration_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            Clipboard.SetText(generatedText);
+            Clipboard.SetText(finalString);
             Console.WriteLine("Objects generation copied to clipboard.");
             btnGenerate.Text = "Generate";
             splitContainer1.Panel1.Enabled = true;

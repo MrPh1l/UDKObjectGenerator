@@ -4,7 +4,7 @@ using System.Linq;
 using System.Numerics;
 using UELib;
 
-namespace AlexandriaLibraryGenerator.Classes
+namespace UDKObjectGenerator.AlexandriaLibrary
 {
     public class Package
     {
