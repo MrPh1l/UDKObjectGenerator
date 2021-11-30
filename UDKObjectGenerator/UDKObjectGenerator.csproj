@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="config.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="keys.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

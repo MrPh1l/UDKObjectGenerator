@@ -11,6 +11,7 @@ namespace UDKObjectGenerator
     public partial class MainForm : Form
     {
         private Level MainLevel;
+        private string rlCookedPCConsoleDir = "";
         private string generatedText = "";
         private string filePath = "";
 
@@ -22,6 +23,9 @@ namespace UDKObjectGenerator
         private void MainForm_Load(object sender, EventArgs e)
         {
             Console.SetOut(new ControlWriter(txtBoxConsole));
+            using var streamReader = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "\\config.cfg");
+            rlCookedPCConsoleDir = streamReader.ReadLine();
+            streamReader.Close();
         }
 
         #region Package generation tab
@@ -104,6 +108,22 @@ namespace UDKObjectGenerator
         #endregion
 
         #region Alexandria library tab
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1 && string.IsNullOrWhiteSpace(rlCookedPCConsoleDir))
+            {
+                if (folderBrowserDialogCookedPCConsole.ShowDialog() == DialogResult.OK
+                    && !string.IsNullOrWhiteSpace(folderBrowserDialogCookedPCConsole.SelectedPath)
+                    && folderBrowserDialogCookedPCConsole.SelectedPath.EndsWith("CookedPCConsole"))
+                {
+                    rlCookedPCConsoleDir = folderBrowserDialogCookedPCConsole.SelectedPath;
+                    using var streamWriter = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\config.cfg");
+                    streamWriter.Write(rlCookedPCConsoleDir);
+                    streamWriter.Close();
+                }
+            }
+        }
+
         private void BtnAlexandriaGenerate_Click(object sender, EventArgs e)
         {
             if (!bgWorkerAlexandriaGen.IsBusy)
@@ -112,10 +132,11 @@ namespace UDKObjectGenerator
 
         private void BgWorkerAlexandriaGen_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            const string rlCookedPCConsoleDir = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\rocketleague\\TAGame\\CookedPCConsole";
-
-            if (!Directory.Exists(rlCookedPCConsoleDir))
+            if (!Directory.Exists(rlCookedPCConsoleDir) || !File.Exists($"{rlCookedPCConsoleDir}\\AkAudio.upk"))
+            {
+                Console.WriteLine("Could not find or invalid CookedPCConsole directory.");
                 return;
+            }
 
             if (lstBoxPackagesToGenerate.SelectedItems.Count <= 0)
                 return;

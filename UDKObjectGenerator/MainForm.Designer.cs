@@ -50,6 +50,7 @@ namespace UDKObjectGenerator
             this.txtBoxConsole = new System.Windows.Forms.RichTextBox();
             this.bgWorkerPackageGen = new System.ComponentModel.BackgroundWorker();
             this.bgWorkerAlexandriaGen = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialogCookedPCConsole = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -133,6 +134,7 @@ namespace UDKObjectGenerator
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(282, 410);
             this.tabControl1.TabIndex = 6;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -517,6 +519,13 @@ namespace UDKObjectGenerator
             this.bgWorkerAlexandriaGen.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgWorkerAlexandriaGen_DoWork);
             this.bgWorkerAlexandriaGen.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BgWorkerAlexandriaGen_RunWorkerCompleted);
             // 
+            // folderBrowserDialogCookedPCConsole
+            // 
+            this.folderBrowserDialogCookedPCConsole.Description = "Select Rocket League CookedPCConsole folder";
+            this.folderBrowserDialogCookedPCConsole.SelectedPath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\rocketleague\\TAGame\\CookedPCConsole" +
+    "";
+            this.folderBrowserDialogCookedPCConsole.UseDescriptionForTitle = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -564,6 +573,7 @@ namespace UDKObjectGenerator
         private System.Windows.Forms.Label lblPackagesToGenerate;
         private System.ComponentModel.BackgroundWorker bgWorkerPackageGen;
         private System.ComponentModel.BackgroundWorker bgWorkerAlexandriaGen;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogCookedPCConsole;
     }
 }
 
