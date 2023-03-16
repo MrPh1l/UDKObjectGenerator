@@ -18,7 +18,6 @@ namespace UDKObjectGenerator.NameTable
 
             TextObject = TextObject.Replace("EDetailMode.", "");
             TextObject = TextObject.Replace("ESceneDepthPriorityGroup.", "");
-            TextObject = TextObject.Replace("LensFlare'", $"LensFlare'{FileName}.");
             TextObject = TextObject.Replace("Translation=", "Location=");
             TextObject = TextObject.Replace("\tScale3D=", "\tDrawScale3D=");
 

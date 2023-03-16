@@ -378,7 +378,11 @@ namespace UELib.Core
                                 if( !inline )
                                 {
                                     // =CLASS'Package.Group(s)+.Name'
-                                    propertyValue = String.Format( "{0}\'{1}\'", uObject.GetClassName(), uObject.GetOuterGroup() );
+                                    if (uObject.ImportTable == null)
+                                        propertyValue = String.Format("{0}\'{1}.{2}\'", uObject.GetClassName(), uObject.Package.PackageName, uObject.GetOuterGroup());
+                                    else
+                                        propertyValue = String.Format("{0}\'{1}\'", uObject.GetClassName(), uObject.GetOuterGroup());
+                                    //propertyValue = String.Format("{0}\'{1}.{2}\'", uObject.GetClassName(), uObject.ImportTable != null ? uObject.ImportTable.PackageName : uObject.Package.PackageName, uObject.GetOuterGroup());
                                 }
                             }
                             else

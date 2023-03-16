@@ -60,8 +60,16 @@ namespace UDKObjectGenerator
                 if (obj.ExportTable == null || obj.Name == "None")
                     continue;
 
+                var objTopOuter = obj;
+
+                while (objTopOuter.Outer != null)
+                    objTopOuter = objTopOuter.Outer;
+
+                if (objTopOuter.GetClassName() != "World")
+                    continue;
+
                 if (lstBoxTypesToGenerate.SelectedItems.Count == 0
-                    || lstBoxTypesToGenerate.SelectedItems.Contains(obj.NameTable.Name))
+                    || lstBoxTypesToGenerate.SelectedItems.Contains(obj.GetClassName()))
                 {
                     //if (obj.NameTable.Name == "StaticMeshActor_SMC") // Only use one NameTable during my tests until they're all implemented
                     //if (obj.Name == "StaticMeshActor_SMC_39")

@@ -1083,6 +1083,9 @@ namespace UDKObjectGenerator.AlexandriaLibrary
                 "End Object\n" +
                 "Begin Object Class=GFxAction_Invoke Name=GFxAction_Invoke_2\n" +
                     "\tMethodName=\"setCurrentPackageName\"\n" +
+                    "\tArguments(0)=()\n" +
+                    "\tArguments(1)=()\n" +
+                    "\tArguments(2)=()\n" +
                     "\tInputLinks(0)=(DrawY=-5070,OverrideDelta=11)\n" +
                     "\tOutputLinks(0)=(DrawY=-5070,OverrideDelta=11)\n" +
                     "\tVariableLinks(0)=(DrawX=-1268,OverrideDelta=16)\n" +
@@ -1704,6 +1707,7 @@ namespace UDKObjectGenerator.AlexandriaLibrary
                 "End Object\n" +
                 "Begin Object Class=GFxAction_Invoke Name=GFxAction_Invoke_3\n" +
                     "\tMethodName=\"setCurrentAssetName\"\n" +
+                    "\tArguments(0)=()\n" +
                     "\tInputLinks(0)=(DrawY=-3918,OverrideDelta=11)\n" +
                     "\tOutputLinks(0)=(DrawY=-3918,OverrideDelta=11)\n" +
                     "\tVariableLinks(0)=(DrawX=-1316,OverrideDelta=16)\n" +

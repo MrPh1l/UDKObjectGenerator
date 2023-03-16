@@ -15,9 +15,6 @@ namespace UDKObjectGenerator.NameTable
                 TextObject +
                 "\r\nEnd Actor\r\n";
 
-            TextObject = TextObject.Replace("StaticMesh'", $"StaticMesh'{FileName}.");
-            TextObject = TextObject.Replace("MaterialInstanceConstant'", $"MaterialInstanceConstant'{FileName}.");
-            TextObject = TextObject.Replace("Material'", $"Material'{FileName}.");
             TextObject = TextObject.Replace("EDetailMode.", "");
             TextObject = TextObject.Replace("Translation=", "Location=");
             TextObject = TextObject.Replace("\tScale3D=", "\tDrawScale3D=");

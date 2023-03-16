@@ -16,7 +16,6 @@ namespace UDKObjectGenerator.NameTable
                 
 
             TextObject = TextObject.Replace("EDetailMode.", "");
-            TextObject = TextObject.Replace("ParticleSystem'", $"ParticleSystem'{FileName}.");
             TextObject = TextObject.Replace("Translation=", "Location=");
             TextObject = TextObject.Replace("\tScale3D=", "\tDrawScale3D=");
 

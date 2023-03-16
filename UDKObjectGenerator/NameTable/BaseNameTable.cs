@@ -25,7 +25,7 @@ namespace UDKObjectGenerator.NameTable
 
         public virtual string ProcessString()
         {
-            Console.Write($"Processing '{UObj.Name}' of type '{UObj.NameTable.Name}' ... ");
+            Console.Write($"Processing '{UObj.Name}' of type '{UObj.GetClassName()}' ... ");
 
             if (UseInvisitek)
             {

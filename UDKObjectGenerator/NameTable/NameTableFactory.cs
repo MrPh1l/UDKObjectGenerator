@@ -7,6 +7,8 @@ namespace UDKObjectGenerator.NameTable
     {
         public static BaseNameTable GetNameTable(UObject uObj, string fileName, bool useInvisitek, bool useLayers)
         {
+            var className = uObj.GetClassName();
+
             switch (uObj.NameTable.Name)
             {
                 case "AkAmbientSoundActor":
@@ -20,13 +22,21 @@ namespace UDKObjectGenerator.NameTable
                 case "LensFlareSource":
                     return new LensFlareSource(uObj, fileName, useInvisitek, useLayers);
                 case "PlayerStart_TA":
-                    return new PlayerStart_TA(uObj, fileName, useInvisitek, useLayers);
+                    //return new PlayerStart_TA(uObj, fileName, useInvisitek, useLayers);
+                    Console.WriteLine("'PlayerStart_TA' disabled. Missing its location data at the moment.");
+                    return null;
+                case "SceneCaptureCubeMapActor":
+                    return new SceneCaptureCubeMapActor(uObj, fileName, useInvisitek, useLayers);
                 case "StaticMeshActor":
                     return new StaticMeshActor(uObj, fileName, useInvisitek, useLayers);
                 case "StaticMeshActor_SMC":
                     return new StaticMeshActor_SMC(uObj, fileName, useInvisitek, useLayers);
+                case "GroundStaticMeshActor_TA_SMC":
+                    return new StaticMeshActor_SMC(uObj, fileName, useInvisitek, useLayers); // For now
                 default:
-                    Console.WriteLine($"Class not implemented for '{uObj.NameTable.Name}'.");
+#if DEBUG
+                    Console.WriteLine($"Class '{className}' not implemented for name '{uObj.NameTable.Name}'.");
+#endif
                     return null;
             }
         }

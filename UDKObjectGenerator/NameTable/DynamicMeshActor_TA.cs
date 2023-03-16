@@ -15,9 +15,6 @@ namespace UDKObjectGenerator.NameTable
                 "Begin Actor Class=DynamicMeshActor_TA Name=DynamicMeshActor_TA_0 Archetype=DynamicMeshActor_TA'Engine.Default__DynamicMeshActor_TA'\r\n" +
                 TextObject;
 
-            TextObject = TextObject.Replace("StaticMesh'", $"StaticMesh'{FileName}.");
-            TextObject = TextObject.Replace("MaterialInstanceConstant'", $"MaterialInstanceConstant'{FileName}.");
-            TextObject = TextObject.Replace("Material'", $"Material'{FileName}.");
             TextObject = TextObject.Replace("EDetailMode.", "");
             TextObject = TextObject.Replace("Translation=", "Location=");
             TextObject = TextObject.Replace("\tScale3D=", "\tDrawScale3D=");

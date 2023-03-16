@@ -18,8 +18,6 @@ namespace UDKObjectGenerator.NameTable
                 TextObject +
                 "\r\nEnd Actor\r\n";
 
-            TextObject = TextObject.Replace("AkSoundCue'", $"AkSoundCue'{FileName}.");
-
             var finalString = "";
             var objectCreated = false;
             var inObject = false;
