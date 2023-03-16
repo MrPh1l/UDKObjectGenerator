@@ -155,7 +155,7 @@ namespace UDKObjectGenerator
             // 
             lstBoxTypesToGenerate.FormattingEnabled = true;
             lstBoxTypesToGenerate.ItemHeight = 15;
-            lstBoxTypesToGenerate.Items.AddRange(new object[] { "AkAmbientSoundActor", "DynamicMeshActor_TA", "InterpActor", "LensFlareSource", "ParticleSystemComponent", "PlayerStart_TA", "SceneCaptureCubeMapActor", "StaticMeshActor", "StaticMeshComponent" });
+            lstBoxTypesToGenerate.Items.AddRange(new object[] { "AkAmbientSoundActor", "DynamicMeshActor_TA", "ExponentialHeightFog", "InterpActor", "LensFlareSource", "ParticleSystemComponent", "PlayerStart_TA", "SceneCaptureCubeMapActor", "StaticMeshActor", "StaticMeshComponent" });
             lstBoxTypesToGenerate.Location = new System.Drawing.Point(6, 169);
             lstBoxTypesToGenerate.Name = "lstBoxTypesToGenerate";
             lstBoxTypesToGenerate.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
