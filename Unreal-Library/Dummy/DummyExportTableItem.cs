@@ -1,23 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UELib.Dummy
+﻿namespace UELib.Dummy
 {
-    class DummyExportTableItem
+    internal class DummyExportTableItem
     {
-        public int newClassIndex = 0;
-        public int newSuperIndex = 0;
-        public int newOuterIndex = 0;
         public int newArchetypeIndex = 0;
+        public int newClassIndex = 0;
+        public int newOuterIndex = 0;
+        public int newSuperIndex = 0;
 
-        public UExportTableItem original;
-
-        public int packageFlag { get; private set; }
+        public IUExportTableItem original;
 
 
-        public DummyExportTableItem(UExportTableItem b) => original = b;
+        public DummyExportTableItem(IUExportTableItem b)
+        {
+            original = b;
+        }
+
+        public int PackageFlag { get; private set; }
+
+        public long GetExportObjectFlag()
+        {
+            switch (original.ClassName)
+            {
+                case "Package":
+                    return 0x7000400000000;
+                case "AkSoundCue":
+                case "AkBank":
+                    return 0xF000400000400;
+                //case "Material":
+                //    return 0xF000400000400; // No thumbnail generation for materials
+                default:
+                    return 0xF000400000000;
+            }
+        }
     }
 }

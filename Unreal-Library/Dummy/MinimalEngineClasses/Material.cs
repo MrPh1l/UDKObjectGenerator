@@ -1,32 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UELib.Dummy
+﻿namespace UELib.Dummy
 {
-    class Material : MinimalBase
+    internal class Material : MinimalBase
     {
-        public static int serialSize = 16;
+        public Material(IUExportTableItem exportTableItem, UnrealPackage package) : base(exportTableItem, package)
+        {
+            FixNameIndexAtPosition(package, "None", 4);
+        }
 
-        byte[] minimalMaterialByteArray = {
-            0xFF, 0xFF, 0xFF, 0xFF, 0x3B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
+        protected override byte[] MinimalByteArray { get; } =
+        {
+            0xFF, 0xFF, 0xFF, 0xFF, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF5, 0xF5, 0x04, 0xEC,
+            0x14, 0x8F, 0x83, 0x4E, 0xA1, 0x24, 0xA4, 0x09, 0x91, 0x57, 0x82, 0xFC, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
         };
 
 
-        protected override byte[] minimalByteArray => minimalMaterialByteArray;
-
-        public override int GetSerialSize() => serialSize;
-
-        public override void Write(IUnrealStream stream, UnrealPackage package)
+        protected override void WriteSerialData(IUnrealStream stream, UnrealPackage package)
         {
-            FixNameIndexAtPosition(package, "None", 4);
-            stream.Write(minimalByteArray, 0, serialSize);
+            stream.Write(MinimalByteArray, 0, MinimalByteArray.Length);
         }
-
     }
 
-    class DecalMaterial: Material{}
-}
+    internal class MaterialInstanceConstant : MinimalBase
+    {
+        public MaterialInstanceConstant(IUExportTableItem exportTableItem, UnrealPackage package) : base(exportTableItem, package)
+        {
+        }
 
+
+        protected override byte[] MinimalByteArray { get; } =
+        {
+            0xFF, 0xFF, 0xFF, 0xFF, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+        };
+
+        protected override void WriteSerialData(IUnrealStream stream, UnrealPackage package)
+        {
+            FixNameIndexAtPosition(package, "None", 4);
+            stream.Write(MinimalByteArray, 0, MinimalByteArray.Length);
+        }
+    }
+}
