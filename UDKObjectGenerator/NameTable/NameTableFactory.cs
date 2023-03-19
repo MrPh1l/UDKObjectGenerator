@@ -24,9 +24,7 @@ namespace UDKObjectGenerator.NameTable
                 case "LensFlareSource":
                     return new LensFlareSource(uObj, fileName, useInvisitek, useLayers);
                 case "PlayerStart_TA":
-                    //return new PlayerStart_TA(uObj, fileName, useInvisitek, useLayers);
-                    Console.WriteLine("'PlayerStart_TA' disabled. Missing its location data at the moment.");
-                    return null;
+                    return new PlayerStart_TA(uObj, fileName, useInvisitek, useLayers);
                 case "SceneCaptureCubeMapActor":
                     return new SceneCaptureCubeMapActor(uObj, fileName, useInvisitek, useLayers);
                 case "StaticMeshActor":

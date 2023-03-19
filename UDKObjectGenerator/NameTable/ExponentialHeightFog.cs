@@ -1,7 +1,6 @@
-﻿using System.Text.RegularExpressions;
-using System;
+﻿using System;
+using System.Text.RegularExpressions;
 using UELib.Core;
-using System.Xml.Linq;
 
 namespace UDKObjectGenerator.NameTable
 {
@@ -27,7 +26,7 @@ namespace UDKObjectGenerator.NameTable
             {
                 if (!objectCreated)
                 {
-                    if (Regex.IsMatch(line, "begin object name=ExponentialHeightFog class=ExponentialHeightFog", RegexOptions.IgnoreCase))
+                    if (Regex.IsMatch(line, @"begin object name=ExponentialHeightFog(?!Component)\w+ class=ExponentialHeightFog", RegexOptions.IgnoreCase))
                         continue;
 
                     if (line.ToLower().Contains("begin object "))
